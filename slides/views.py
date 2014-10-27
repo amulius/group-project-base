@@ -10,6 +10,14 @@ def teacher(request):
     return render(request, "teacher.html")
 
 
+def done(request):
+    return render(request, "done.html")
+
+
+def help(request):
+    return render(request, "help.html")
+
+
 def teacher_index(request):
     return render(request, "teacher_index.html")
 
@@ -20,4 +28,3 @@ def lecture(request, week_number, lecture_time):
         'lecture_time': lecture_time
     }
     return render(request, "lecture.html", data)
-

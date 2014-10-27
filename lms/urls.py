@@ -42,7 +42,7 @@ urlpatterns = patterns('',
 
     url(r'^test_overlay/$', 'slides.views.test_overlay', name='test_overlay'),
     url(r'^teacher/$', 'slides.views.teacher', name='teacher'),
-
+    url(r'^done/$', 'slides.views.done', name='done'),
 )
 
 if settings.DEBUG:

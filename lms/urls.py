@@ -47,7 +47,7 @@ urlpatterns = patterns('',
     url(r'^register/$', 'slides.views.register', name='register'),
     url(r'^login/$', 'django.contrib.auth.views.login', name='login'),
     url(r'^logout/$', 'django.contrib.auth.views.logout', name='logout'),
-    # url(r'^account/$', 'slides.views.edit_account', name='edit_account'),
+    url(r'^account/$', 'slides.views.edit_account', name='edit_account'),
 
 )
 

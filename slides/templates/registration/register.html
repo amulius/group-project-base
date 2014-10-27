@@ -4,10 +4,29 @@
     <section>
         <form method="post" action=".">
             {% csrf_token %}
+            {{ form.non_field_erros }}
+            <div class="fieldWrapper">
+                {{ form.real_name.errors }}
+                <label for="id_real_name">Real Name</label>
+                {{ form.real_name }}
+            </div>
+            <div class="fieldWrapper">
+                {{ form.real_name.errors }}
+                <label for="id_real_name">Real Name</label>
+                {{ form.real_name }}
+            </div>
             {{ form.as_p }}
 
             <input type="submit" value="Submit">
         </form>
     </section>
 {% endblock %}
-            
+
+
+
+
+Upload a new profile photo
+Real Name
+Email
+Password
+Confirm Password

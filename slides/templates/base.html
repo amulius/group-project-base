@@ -91,8 +91,11 @@
                     <div class="row">
                     <div class="col-lg-4 col-lg-offset-8 col-md-4 col-md-offset-8 col-sm-4 col-sm-offset-8 col-xs-4 col-xs-offset-8">
 {#                        <button id="btn_action" type="button" class="btn btn-primary btn-lg btn-block popup-link" href="#" data-popup-target="#example-popup">Actions</button>#}
-                          <button id="btn_action" type="button" class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#myModal">Action</button>
-
+                        {% if user.authenticated %}
+                            <button id="btn_action" type="button" class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#myModal">Action</button>
+                        {% else %}
+                            <button id="btn_action" type="button" class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#myModal">Student Login</button>
+                        {% endif %}
                     </div>
                     </div>
                     <!--   pop up overlay end here -->
@@ -106,7 +109,7 @@
                     <h1>{% block presentation_title%}{% endblock %}</h1>
                     </div>
                     <a id="yetiLogo" href="http://www.yetihq.com/"><img src="{% static "img/yeti-power.png" %}"></a>
-                    {% block register %}
+                    {% block edit_account %}
                     {% endblock %}
                 </section>
             {% endblock %}

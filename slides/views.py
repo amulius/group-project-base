@@ -1,9 +1,11 @@
 from django.contrib.auth import authenticate, login
 from django.shortcuts import render, redirect
-from slides.forms import PersonForm
+from slides.forms import PersonForm, EditPersonForm
+from slides.models import Person
 
 
 def test_overlay(request):
+
     return render(request, "test_overlay.html")
 
 def register(request):
@@ -25,20 +27,25 @@ def register(request):
         'form': form,
     })
 
-# def edit_account(request):
-#     if request.method == 'POST':
-#         form = EditPersonForm(request.POST)
-#         if form.is_valid():
-#             date = request.POST['date']
-#             print date
-#             checks = Checked_in.objects.filter(date=date)
-#             students = []
-#             for check in checks:
-#                 user = check.user.username
-#                 if user not in students:
-#                     students.append(user)
-#             return render(request, "teacher_home.html", {'students': students, "date" : date})
-#     else:
-#         form = TeacherForm()
-#
-#     return render(request, "teacher_view.html", {'form': form})
+
+def edit_account(request):
+    if request.method == 'POST':
+        form = EditPersonForm(request.POST)
+        if form.is_valid():
+            date = request.POST['date']
+            print date
+            checks = Person.objects.filter(date=date)
+            students = []
+            for check in checks:
+                user = check.user.username
+                if user not in students:
+                    students.append(user)
+            return render(request, "edit_account.html", {'students': students, "date" : date})
+    else:
+        form = EditPersonForm()
+
+    return render(request, "edit_account.html", {'form': form})
+
+
+def teacher(request):
+    return render(request, "teacher.html")

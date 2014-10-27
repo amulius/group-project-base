@@ -42,6 +42,13 @@ urlpatterns = patterns('',
 
     url(r'^test_overlay/$', 'slides.views.test_overlay', name='test_overlay'),
     url(r'^teacher/$', 'slides.views.teacher', name='teacher'),
+
+    # User authentication
+    url(r'^register/$', 'slides.views.register', name='register'),
+    url(r'^login/$', 'django.contrib.auth.views.login', name='login'),
+    url(r'^logout/$', 'django.contrib.auth.views.logout', name='logout'),
+    url(r'^account/$', 'slides.views.edit_account', name='edit_account'),
+
     url(r'^done/$', 'slides.views.done', name='done'),
     url(r'^help/$', 'slides.views.help', name='help'),
     url(r'^question/$', 'slides.views.question', name='question'),

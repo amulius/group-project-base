@@ -44,6 +44,7 @@ urlpatterns = patterns('',
     url(r'^teacher/$', 'slides.views.teacher', name='teacher'),
     url(r'^done/$', 'slides.views.done', name='done'),
     url(r'^help/$', 'slides.views.help', name='help'),
+    url(r'^question/$', 'slides.views.question', name='question'),
 )
 
 if settings.DEBUG:

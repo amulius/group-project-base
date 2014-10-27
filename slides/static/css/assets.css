@@ -83,8 +83,9 @@ max-width: 100%;
 
 .date {
     font-family: arial, helvetica, sans-serif;
-    color: grey;
+    color: #dad9db;
     font-size: 1em;
+    margin-left: 50px;
 }
 
 .user {
@@ -92,6 +93,7 @@ max-width: 100%;
     max-width: 100%;
     max-height: 100%;
     margin-right: 20px;
+    width: 2em;
 }
 
 #doneimg {
@@ -100,6 +102,7 @@ max-width: 100%;
     float: none;
     display: block;
     margin: 0 auto;
+
 }
 
 
@@ -134,4 +137,51 @@ max-width: 100%;
     background-color:white;
     color: #c92e35;
     border-radius: 0;
+}
+
+/*questions page*/
+
+.questionpage {
+    font-family: arial, helvetica, sans-serif;
+    color: #c9aa18;
+    font-size: 1em;
+}
+
+.panelquestion  {
+    border: 0;
+    border-bottom: 3px solid #c9aa18;
+    padding-bottom: 0;
+
+}
+.panelquestion a {
+    font-family: arial, helvetica, sans-serif;
+    color: #c9aa18;
+    font-size: 2em;
+    font-weight: bold;
+
+}
+
+#answer  {
+    border-radius:0;
+    background-color: #c9aa18 !important;
+    color:white;
+}
+
+#answered {
+    border-color: #c9aa18;
+    background-color:white !important;
+    color: #c9aa18;
+    border-radius: 0;
+    border-width: 2px;
+}
+
+.text {
+    font-family: arial, helvetica, sans-serif;
+    color: #9c9c9c;
+    font-size: 1em;
+    margin-left: 50px;
+}
+
+.indent {
+    margin-left: 50px;
 }

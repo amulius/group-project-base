@@ -14,3 +14,6 @@ def done(request):
 
 def help(request):
     return render(request, "help.html")
+
+def question(request):
+    return render(request, "question.html")

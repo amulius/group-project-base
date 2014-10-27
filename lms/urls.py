@@ -41,6 +41,7 @@ urlpatterns = patterns('',
     url("^week3/lab/$", TemplateView.as_view(template_name="week3/lab.html"), name="week3_lab"),
 
     url(r'^test_overlay/$', 'slides.views.test_overlay', name='test_overlay'),
+    url(r'^teacher/$', 'slides.views.teacher', name='teacher'),
 
     
 

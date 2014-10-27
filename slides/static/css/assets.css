@@ -100,6 +100,38 @@ max-width: 100%;
     float: none;
     display: block;
     margin: 0 auto;
+}
 
 
+/*help page*/
+
+.helppage {
+    font-family: arial, helvetica, sans-serif;
+    color: #d53038;
+    font-size: 1em;
+}
+
+.panelhelp  {
+    border: 0;
+    border-bottom: 3px solid #d53038;
+    padding-bottom: 0;
+
+}
+.panelhelp a {
+    font-family: arial, helvetica, sans-serif;
+    color: #d53038;
+    font-size: 2em;
+    font-weight: bold;
+
+}
+
+.btn-danger {
+    border-radius:0;
+}
+
+.btn-default {
+    border-color: red;
+    background-color:white;
+    color: #c92e35;
+    border-radius: 0;
 }

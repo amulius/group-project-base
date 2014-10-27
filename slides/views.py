@@ -11,3 +11,6 @@ def teacher(request):
 
 def done(request):
     return render(request, "done.html")
+
+def help(request):
+    return render(request, "help.html")

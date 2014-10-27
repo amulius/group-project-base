@@ -75,11 +75,12 @@
                 <section class="titleSlide" data-background="#168eae">
                     <h1>{% block presentation_title%}{% endblock %}</h1>
                     <a id="yetiLogo" href="http://www.yetihq.com/"><img src="{% static "img/yeti-power.png" %}"></a>
+                    {% block register %}
+                    {% endblock %}
                 </section>
             {% endblock %}
             {% block slides %}
             {% endblock %}
-
             <div class="footer">
             </div>
 

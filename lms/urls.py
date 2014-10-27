@@ -42,6 +42,12 @@ urlpatterns = patterns('',
 
     url(r'^test_overlay/$', 'slides.views.test_overlay', name='test_overlay'),
 
+    # User authentication
+    url(r'^register/$', 'slides.views.register', name='register'),
+    url(r'^login/$', 'django.contrib.auth.views.login', name='login'),
+    url(r'^logout/$', 'django.contrib.auth.views.logout', name='logout'),
+    # url(r'^account/$', 'slides.views.edit_account', name='edit_account'),
+
 )
 
 if settings.DEBUG:

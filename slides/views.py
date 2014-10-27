@@ -9,3 +9,7 @@ def test_overlay(request):
 def teacher(request):
     return render(request, "teacher.html")
 
+
+def teacher_index(request):
+    return render(request, "teacher_index.html")
+

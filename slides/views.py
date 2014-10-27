@@ -2,6 +2,7 @@ from django.shortcuts import render
 
 # Create your views here.
 
+
 def test_overlay(request):
     return render(request, "test_overlay.html")
 
@@ -16,6 +17,10 @@ def done(request):
 
 def help(request):
     return render(request, "help.html")
+
+
+def question(request):
+    return render(request, "question.html")
 
 
 def teacher_index(request):

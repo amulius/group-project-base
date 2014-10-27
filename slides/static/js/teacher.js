@@ -1,6 +1,7 @@
 $(document).ready(function () {
 
         var path = window.location.pathname.split('/').slice(2).join('/');
+        console.log(window.location.pathname.split('/'));
 
         var url = '/' + path;
         $.ajax({

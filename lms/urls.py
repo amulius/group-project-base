@@ -45,10 +45,10 @@ urlpatterns = patterns('',
 
     url(r'^done/$', 'slides.views.done', name='done'),
     url(r'^help/$', 'slides.views.help', name='help'),
+    url(r'^question/$', 'slides.views.question', name='question'),
 
     url(r'^teacher_index/$', 'slides.views.teacher_index', name='teacher_index'),
     url(r'^teacher/week(?P<week_number>\d+)/(?P<lecture_time>.+)/$', 'slides.views.lecture', name="lecture"),
-
 )
 
 if settings.DEBUG:

@@ -1,0 +1,8 @@
+#newtitlewidth {
+    width: 80%;
+
+}
+
+body > div.reveal.linear > div.slides > section.present > h2 {
+    width: 700px;
+}

@@ -42,6 +42,10 @@ urlpatterns = patterns('',
 
     url(r'^test_overlay/$', 'slides.views.test_overlay', name='test_overlay'),
 
+    
+
+
+
 )
 
 if settings.DEBUG:

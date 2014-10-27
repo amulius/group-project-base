@@ -1,5 +1,5 @@
 from django.contrib import admin
-from models import *
+from models import Person, Done, Help, Question, Slide
 
 # Register your models here.
 admin.site.register(Person)

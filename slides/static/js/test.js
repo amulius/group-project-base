@@ -6,7 +6,7 @@ $(document).ready(function () {
             url: '/',
             type: 'GET',
             success: function (response) {
-//                console.log(response);
+//                console.log(typeof response);
                 $('#testStuff').html(response);
                 var a = $('.accordion').find('a');
                 var teacher = '/teacher';

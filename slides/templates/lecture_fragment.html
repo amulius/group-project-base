@@ -1,0 +1,27 @@
+{% load staticfiles %}
+<div class="title">
+<h4 class="unit">Week 6 - 1am</h4>
+<h4 class="unit_title">Introduction to Design</h4>
+</div>
+<br>
+<br>
+<div class="main">
+<div class="panel-group" id="accordion">
+    {% for slide in slides %}
+        <div class="panel panel-default">
+            <a data-toggle="collapse" data-parent="#accordion" href="#{{ forloop.counter }}">{{ slide }} <span class="fa fa-caret-right"></span></a>
+        </div>
+            <div id="{{ forloop.counter }}" class="panel-collapse collapse">
+{#                <div class="panel-body">#}
+{#                   <p class="done">16 <i>done</i><img src="{% static 'img/Assets/Checkmark-HOLLOW.png' %}"/></p>#}
+{#                </div>#}
+{#                <div class="panel-body">#}
+{#                   <p class="questions">2 <i>questions</i> <img src="{% static 'img/Assets/Questionmark-hollow.png' %}"/></p>#}
+{#                </div>#}
+{#                <div class="panel-body">#}
+{#                   <p class="help">1 <i>needs help</i> <img src="{% static 'img/Assets/Exclamation-hollow.png' %}"/></p>#}
+{#                </div>#}
+            </div>
+    {% endfor %}
+</div>
+</div>

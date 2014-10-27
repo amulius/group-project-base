@@ -49,3 +49,12 @@ def edit_account(request):
 
 def teacher(request):
     return render(request, "teacher.html")
+
+def done(request):
+    return render(request, "done.html")
+
+def help(request):
+    return render(request, "help.html")
+
+def question(request):
+    return render(request, "question.html")

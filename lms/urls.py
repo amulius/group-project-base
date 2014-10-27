@@ -49,6 +49,9 @@ urlpatterns = patterns('',
     url(r'^logout/$', 'django.contrib.auth.views.logout', name='logout'),
     url(r'^account/$', 'slides.views.edit_account', name='edit_account'),
 
+    url(r'^done/$', 'slides.views.done', name='done'),
+    url(r'^help/$', 'slides.views.help', name='help'),
+    url(r'^question/$', 'slides.views.question', name='question'),
 )
 
 if settings.DEBUG:

@@ -1,0 +1,52 @@
+body{
+margin: 20px;
+    }
+
+.title {
+    border-bottom: 2px solid black;
+}
+.unit {
+    color: lightgray;
+}
+.panel {
+    border: 0;
+    border-bottom: 1px solid lightgray;
+    padding: 2em;
+}
+.panel a {
+    font-family: arial, helvetica, sans-serif;
+    color: black;
+    font-size: 2em;
+    font-weight: bold;
+}
+.panel-body{
+    border-bottom: 1px solid lightgrey;
+}
+
+.fa {
+    color: lightgray;
+}
+.done {
+    font-family: arial, helvetica, sans-serif;
+    color: #43de6c;
+    font-size: 2.5em;
+}
+
+.questions {
+    font-family: arial, helvetica, sans-serif;
+    color: #c9aa18;
+    font-size: 2.5em;
+
+}
+
+.help {
+    font-family: arial, helvetica, sans-serif;
+    color: #d53038;
+    font-size: 2.5em;
+}
+
+img {
+float: right;
+max-width: 100%;
+    max-height: 100%;
+}

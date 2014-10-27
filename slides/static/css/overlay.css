@@ -101,26 +101,76 @@
 }
 
 #help {
-    /*content: url('img/Assets/Checkmark-HOLLOW.png');*/
     padding: 5px;
-    width: 240px;
+    width: 250px;
     height: 80px;
     border-radius: 12px;
-    background-color: #ff0000;
+    background-color: #df3e3e;
+    font-size: 36px;
+    font-weight: bold;
+    margin: 10px;
+}
+#help > img {
+    background-color: #fff;
+    border-radius: 50%;
 }
 
 #done {
     padding: 5px;
-    width: 240px;
+    width: 250px;
     height: 80px;
     border-radius: 12px;
-    background-color: #3fb34f;
+    background-color: #00e07a;
+    font-size: 36px;
+    font-weight: bold;
+    margin: 10px;
+}
+#done > img {
+    background-color: #fff;
+    border-radius: 50%;
 }
 
 #question {
-    padding: 5px;
-    width: 500px;
-    height: 150px;
+    padding: 10px;
+    width: 550px;
+    height: 225px;
     border-radius: 12px;
-    background-color: #f59331;
+    background-color: #d2b400;
+    margin: 5px;
+}
+#question > span {
+    font-size: 36px;
+    font-weight: bold;
+    color: #fff;
+    padding-left: 5px;
+}
+#question > img {
+    background-color: #fff;
+    border-radius: 50%;
+}
+#question > form {
+
+    margin-top: 10px;
+}
+textarea {
+    border-radius: 2em;
+    outline: none;
+    resize: none;
+}
+
+#myModalLabel {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+#myProfile {
+    font-size: 14px;
+    font-weight: bold;
+    float: right;
+    margin-top: 15px;
+    margin-right: 15px;
+}
+#myProfile >img {
+    width: 40px;
+    padding-right: 10px;
 }

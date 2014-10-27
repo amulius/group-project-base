@@ -57,15 +57,22 @@
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-            <h4 class="modal-title" id="myModalLabel" data-username="profile name">slides title ----- profile name</h4>
+                <span class="modal-title" id="myModalLabel"></span>
+                <span class="modal-title" id="myProfile" data-username="profile name"><img src="{% static 'img/default.png' %}"/>profile name</span><!-- {{ user.first_name }} {{ user.last_name }}-->
           </div>
           <div class="modal-body">
 
-                <button id="help" type="button" class="btn btn-danger btn-lg"><span class="glyphicon glyphicon-warning-sign"> </span> Help</button>
-                <button id="done" type="button" class="btn btn-success btn-lg"><span class="glyphicon glyphicon-ok-circle"> </span> Done</button>
+                <button id="help" type="button" class="btn btn-danger btn-lg"><img src="{% static 'img/Assets/Exclamation-hollow.png' %}"/> Help</button>
+                <button id="done" type="button" class="btn btn-success btn-lg"><img src="{% static 'img/Assets/Checkmark-HOLLOW.png' %}"/> Done</button>
                 <br><br>
-                <button id="question" type="button" class="btn btn-warning btn-lg">Question</button>
-
+{#                <button id="question" type="button" class="btn btn-warning btn-lg">Question</button>#}
+                <div class="bs-example" id="question">
+                    <img src="{% static 'img/Assets/Questionmark-hollow.png' %}"/><span> Question</span>
+                    <form role="form">
+                      <textarea class="form-control" rows="4"></textarea>
+                    </form>
+                    <button id="submit_q" type="button" class="btn btn-default">Submit</button>
+                </div>
           </div>
 {#          <div class="modal-footer">#}
 {#            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>#}

@@ -43,6 +43,7 @@ urlpatterns = patterns('',
     url(r'^test_overlay/$', 'slides.views.test_overlay', name='test_overlay'),
     url(r'^teacher/$', 'slides.views.teacher', name='teacher'),
     url(r'^teacher_index/$', 'slides.views.teacher_index', name='teacher_index'),
+    url(r'^teacher/week(?P<week_number>\d+)/(?P<lecture_time>.+)/$', 'slides.views.lecture', name="lecture"),
 
     
 

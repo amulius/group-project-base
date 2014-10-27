@@ -13,3 +13,11 @@ def teacher(request):
 def teacher_index(request):
     return render(request, "teacher_index.html")
 
+
+def lecture(request, week_number, lecture_time):
+    data = {
+        'week_number': week_number,
+        'lecture_time': lecture_time
+    }
+    return render(request, "lecture.html", data)
+

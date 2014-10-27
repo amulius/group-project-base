@@ -4,3 +4,8 @@ from django.shortcuts import render
 
 def test_overlay(request):
     return render(request, "test_overlay.html")
+
+
+def teacher(request):
+    return render(request, "teacher.html")
+

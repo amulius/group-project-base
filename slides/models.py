@@ -6,10 +6,10 @@ from django.db import models
 
 class Person(AbstractUser):
     is_student = models.BooleanField(default=True)
-    image = models.ImageField(upload_to='profile_image', null=True, blank=True,default='profile_image/default.png')
+    image = models.ImageField(upload_to='profile_image', null=True, blank=True, default='profile_image/default.png')
 
     def __unicode__(self):
-        return u"{}".format(self.name)
+        return u"{}".format(self.username)
 
 
 class Done(models.Model):

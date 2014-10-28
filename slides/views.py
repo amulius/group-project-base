@@ -1,8 +1,12 @@
+import json
 from django.contrib.auth import authenticate, login
+from django.shortcuts import render, redirect, render_to_response
+from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from slides.forms import PersonForm, EditPersonForm
 from slides.models import Person
+
 
 
 def test_overlay(request):
@@ -66,11 +70,42 @@ def edit_account(request):
 def teacher(request):
     return render(request, "teacher.html")
 
+
 def done(request):
     return render(request, "done.html")
+
 
 def help(request):
     return render(request, "help.html")
 
+
 def question(request):
     return render(request, "question.html")
+
+
+def teacher_index(request):
+    return render(request, "teacher_index.html")
+
+
+def lecture(request, week_number, lecture_time):
+    data = {
+        'week_number': week_number,
+        'lecture_time': lecture_time
+    }
+    return render(request, "lecture.html", data)
+
+
+@csrf_exempt
+def lecture_fragment(request):
+    if request.method == 'POST':
+        data_in = json.loads(request.body)
+        if data_in['want_lecture'] == 'yes':
+            return render_to_response('lecture_fragment.html', data_in)
+
+
+@csrf_exempt
+def details(request):
+    if request.method == 'POST':
+        data_in = json.loads(request.body)
+        if data_in['want'] == 'basic':
+            return render_to_response('basic_info_fragment.html', data_in)

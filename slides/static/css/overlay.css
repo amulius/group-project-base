@@ -1,9 +1,11 @@
 
 #btn_action {
+    font-size: 17px;
     background-color: #218eac;
     float: right;
     margin-top: 70px;
     margin-right: -325px;
+    border-radius: 9px;
 }
 
 #btn_login {

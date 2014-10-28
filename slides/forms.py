@@ -30,8 +30,10 @@ class PersonForm(UserCreationForm):
 
 
 class EditPersonForm(forms.Form):
-    email = forms.EmailField(required=True)
     real_name = forms.CharField(required=True)
+    email = forms.EmailField(required=True)
+    password1 = forms.CharField(label=("Password"), widget=forms.PasswordInput,)
+    password2 = forms.CharField(label=("Password confirmation"), widget=forms.PasswordInput,)
 
     class Meta:
         model = Person

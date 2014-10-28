@@ -52,20 +52,27 @@
 
 <body class="{% block body_css %}{% endblock body_css %}">
     <!--  Modal start  -->
-    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
         <div class="modal-content">
           <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-            <h4 class="modal-title" id="myModalLabel" data-username="profile name">slides title ----- profile name</h4>
+
+                <span class="modal-title" id="myModalLabel"></span>
+                <span class="modal-title" id="myProfile" data-username="profile name"><img src="{% static 'img/default.png' %}"/>profile name</span><!-- {{ user.first_name }} {{ user.last_name }}-->
           </div>
           <div class="modal-body">
 
-                <button id="help" type="button" class="btn btn-danger btn-lg"><span class="glyphicon glyphicon-warning-sign"> </span> Help</button>
-                <button id="done" type="button" class="btn btn-success btn-lg"><span class="glyphicon glyphicon-ok-circle"> </span> Done</button>
+                <button id="help" type="button" class="btn btn-danger btn-lg"><img src="{% static 'img/Assets/Exclamation-hollow.png' %}"/> Help</button>
+                <button id="done" type="button" class="btn btn-success btn-lg"><img src="{% static 'img/Assets/Checkmark-HOLLOW.png' %}"/> Done</button>
                 <br><br>
-                <button id="question" type="button" class="btn btn-warning btn-lg">Question</button>
-
+{#                <button id="question" type="button" class="btn btn-warning btn-lg">Question</button>#}
+                <div id="question">
+                    <img src="{% static 'img/Assets/Questionmark-hollow.png' %}"/><span> Question</span>
+                    <form role="form">
+                      <textarea id="the_question" class="form-control" rows="4"></textarea>
+                    </form>
+                    <button id="submit_q" type="button" class="btn btn-default">Submit</button>
+                </div>
           </div>
 {#          <div class="modal-footer">#}
 {#            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>#}
@@ -87,27 +94,25 @@
                 <div class="col-5">
                     <a href="{% url "slides_home" %}" id="rocketULogo"><img class="pull-right" src="{% static "img/rocketu-logo-dark.png" %}"></a>
 
-                    <!--   pop up overlay start here -->
+                    <!--   pop up overlay buttons start here -->
                     <div class="row">
                     <div class="col-lg-4 col-lg-offset-8 col-md-4 col-md-offset-8 col-sm-4 col-sm-offset-8 col-xs-4 col-xs-offset-8">
 {#                        <button id="btn_action" type="button" class="btn btn-primary btn-lg btn-block popup-link" href="#" data-popup-target="#example-popup">Actions</button>#}
-                        {% if user.authenticated %}
-                            <button id="btn_action" type="button" class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#myModal">Action</button>
+                        {% if user.is_authenticated %}
+                            <button id="btn_action" type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#myModal">Actions</button>
                         {% else %}
-                            <a href="{% url 'slides.views.edit_account' %}"><button id="btn_action" type="button" class="btn btn-primary btn-lg btn-block">Student Login</button></a>
+                            <a href="{% url 'slides.views.edit_account' %}"><button id="btn_login" type="button" class="btn btn-primary btn-lg btn-block">Student Login</button></a>
                         {% endif %}
                     </div>
                     </div>
-                    <!--   pop up overlay end here -->
+                    <!--   pop up overlay buttons end here -->
 
                 </div>
             </div>
 
             {% block title_slide %}
                 <section class="titleSlide" data-background="#168eae">
-                    <div class="col-lg-12">
                     <h1>{% block presentation_title%}{% endblock %}</h1>
-                    </div>
                     <a id="yetiLogo" href="http://www.yetihq.com/"><img src="{% static "img/yeti-power.png" %}"></a>
                     {% block edit_account %}
                     {% endblock %}

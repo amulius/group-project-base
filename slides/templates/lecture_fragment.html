@@ -1,0 +1,20 @@
+{% load staticfiles %}
+<div class="title">
+<h4 class="unit">Week {{ week }} - {{ lecture }}</h4>
+<h4 class="unit_title">{{ title }}</h4>
+</div>
+<br>
+<br>
+<div class="main">
+<script src="{% static 'js/slide.js' %}" type="text/javascript"></script>
+<div class="panel-group" id="accordion">
+    {% for slide in slides %}
+        <div class="panel panel-default">
+            <a class="more_info" data-toggle="collapse" data-parent="#accordion" href="#collapse{{ forloop.counter }}" id="{{ forloop.counter }}" data-slide="{{ slide.slide_data }}">{{ slide.slide_title }} <span id="arrow{{ forloop.counter }}" class="fa fa-caret-right"></span></a>
+        </div>
+            <div id="collapse{{ forloop.counter }}" class="panel-collapse collapse">
+                <div id="slide{{ forloop.counter }}"></div>
+            </div>
+    {% endfor %}
+</div>
+</div>

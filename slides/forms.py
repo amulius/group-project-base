@@ -29,15 +29,11 @@ class PersonForm(UserCreationForm):
         )
 
 
-class EditPersonForm(forms.ModelForm):
-    email = forms.EmailField(required=True)
+class EditPersonForm(forms.Form):
     real_name = forms.CharField(required=True)
-    password1 = forms.CharField(label=("Password"),
-        widget=forms.PasswordInput)
-    password2 = forms.CharField(label=("Password confirmation"),
-        widget=forms.PasswordInput,
-        help_text=("Enter the same password as above, for verification."))
-    image = forms.ImageField(label=("Image"))
+    email = forms.EmailField(required=True)
+    password1 = forms.CharField(label=("Password"), widget=forms.PasswordInput,)
+    password2 = forms.CharField(label=("Password confirmation"), widget=forms.PasswordInput,)
 
     class Meta:
         model = Person
@@ -54,7 +50,7 @@ class EditPersonForm(forms.ModelForm):
         raise forms.ValidationError(
             self.error_messages['duplicate_username'],
             code='duplicate_username',
-        )
+        )git 
 
 
 #

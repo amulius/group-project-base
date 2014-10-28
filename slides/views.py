@@ -84,10 +84,12 @@ def lecture_fragment(request):
     if request.method == 'POST':
         data_in = json.loads(request.body)
         if data_in['want_lecture'] == 'yes':
-            data = {
-                'week': data_in['week'],
-                'lecture': data_in['lecture'],
-                'title': data_in['title'],
-                'slides': data_in['slides']
-            }
-            return render_to_response('lecture_fragment.html', data)
+            return render_to_response('lecture_fragment.html', data_in)
+
+
+@csrf_exempt
+def details(request):
+    if request.method == 'POST':
+        data_in = json.loads(request.body)
+        if data_in['want'] == 'basic':
+            return render_to_response('basic_info_fragment.html', data_in)

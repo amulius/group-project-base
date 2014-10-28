@@ -27,20 +27,20 @@ margin: 20px;
 .fa {
     color: lightgray;
 }
-.done {
+.done > a{
     font-family: arial, helvetica, sans-serif;
     color: #43de6c;
     font-size: 2.5em;
 }
 
-.questions {
+.questions > a{
     font-family: arial, helvetica, sans-serif;
     color: #c9aa18;
     font-size: 2.5em;
 
 }
 
-.help {
+.help > a{
     font-family: arial, helvetica, sans-serif;
     color: #d53038;
     font-size: 2.5em;
@@ -184,4 +184,23 @@ max-width: 100%;
 
 .indent {
     margin-left: 50px;
+}
+
+.rotate {
+
+/* Safari */
+-webkit-transform: rotate(90deg);
+
+/* Firefox */
+-moz-transform: rotate(90deg);
+
+/* IE */
+-ms-transform: rotate(90deg);
+
+/* Opera */
+-o-transform: rotate(90deg);
+
+/* Internet Explorer */
+filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+
 }

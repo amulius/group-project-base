@@ -3,6 +3,8 @@ $(document).ready(function () {
     var path = window.location.pathname.split('/').slice(2).join('/');
     var slideStuff = window.location.pathname.split('/').slice(2, 4);
     var url = '/' + path;
+    var week = slideStuff[0].slice(4);
+    var lectureNum = slideStuff[1];
 
     $.ajax({
         url: url,
@@ -10,51 +12,55 @@ $(document).ready(function () {
         success: function (response) {
             var slides = [];
             var i = 0;
-            var j = 0;
-            var k = 0;
-            console.log($(response).find('.slides>section'));
             $(response).find('.slides>section').each(function() {
-//                if (j != 0){
-//                    k++;
-//                    j--;
-//                }
-//                console.log(i, k, j);
-                if($(this).find('h2').length > 1){
-//                    j = $(this).find('h2').length;
-//                    k = -1;
-//                    console.log('block', i, k, j);
+                var subSections = $(this).find('section>h2:first-child');
+                var j = 0;
+                if(subSections.length > 1){
+                    subSections.each(
+                        function(){
+                            slides.push({
+                                'slide_title':$(this).text().trim(),
+                                'slide_number':i,
+                                'slide_sub_number':j,
+                                'slide_data': slide_data(week, lectureNum, i, j)
+                            });
+                            j += 1;
+                        }
+                    );
                 }
-                else if($( this).find('h2').length == 1){
-                    slides.push({
-                        'slide_title':$(this).find('h2').text().trim(),
-                        'slide_number':i,
-                        'slide_sub_number':k
-                    });
-//                    console.log('save', i, k, j);
+                else{
+                    if (i){
+                        slides.push({
+                            'slide_title':$(this).find('h2:first-child').text().trim(),
+                            'slide_number':i,
+                            'slide_sub_number':j,
+                            'slide_data': slide_data(week, lectureNum, i, j)
+                        });
+                    }
                 }
-
-//                if (j == 0){
-//                    i++;
-//                    j = 0;
-////                    k = 0;
-//                }
-
-
+                i += 1;
             });
             var data = {
                 'want_lecture': 'yes',
-                'week': slideStuff[0].slice(4),
-                'lecture': slideStuff[1],
+                'week': week,
+                'lecture': lectureNum,
                 'title': $(response).find('h1').first().text().trim(),
                 'slides': slides
             };
-//             console.log($(response).find('h1').first());
             lecture(data);
         },
         error: function (response) {
             console.log(response);
         }
     });
+
+    var slide_data = function(w,l,n,sN) {
+        var path = 'week'+w+'/'+l+'/#/'+n;
+        if(sN){
+            path += '/'+sN;
+        }
+        return path;
+    };
 
     var lecture = function(data) {
         $.ajax({

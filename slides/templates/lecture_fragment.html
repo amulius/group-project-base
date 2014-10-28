@@ -1,7 +1,7 @@
 {% load staticfiles %}
 <div class="title">
-<h4 class="unit">Week 6 - 1am</h4>
-<h4 class="unit_title">Introduction to Design</h4>
+<h4 class="unit">Week {{ week }} - {{ lecture }}</h4>
+<h4 class="unit_title">{{ title }}</h4>
 </div>
 <br>
 <br>
@@ -9,7 +9,7 @@
 <div class="panel-group" id="accordion">
     {% for slide in slides %}
         <div class="panel panel-default">
-            <a data-toggle="collapse" data-parent="#accordion" href="#{{ forloop.counter }}">{{ slide }} <span class="fa fa-caret-right"></span></a>
+            <a data-toggle="collapse" data-parent="#accordion" href="#{{ forloop.counter }}">{{ slide.slide_title }}:{{ slide.slide_number }}:{{ slide.slide_sub_number }} <span class="fa fa-caret-right"></span></a>
         </div>
             <div id="{{ forloop.counter }}" class="panel-collapse collapse">
 {#                <div class="panel-body">#}

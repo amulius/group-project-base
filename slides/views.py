@@ -1,10 +1,53 @@
-from django.shortcuts import render
+import json
+from django.contrib.auth import authenticate, login
+from django.shortcuts import render, redirect, render_to_response
+from django.views.decorators.csrf import csrf_exempt
+from slides.forms import PersonForm, EditPersonForm
+from slides.models import Person
 
-# Create your views here.
 
 
 def test_overlay(request):
+
     return render(request, "test_overlay.html")
+
+def register(request):
+    if request.method == 'POST':
+        form = PersonForm(request.POST)
+        if form.is_valid():
+            username = request.POST["username"]
+            password = request.POST["password1"]
+            form.save()
+            user = authenticate(username=username, password=password)
+            if user is not None:
+                if user.is_active:
+                    login(request, user)
+                    return redirect("home")
+    else:
+        form = PersonForm()
+
+    return render(request, "registration/register.html", {
+        'form': form,
+    })
+
+
+def edit_account(request):
+    if request.method == 'POST':
+        form = EditPersonForm(request.POST)
+        if form.is_valid():
+            date = request.POST['date']
+            print date
+            checks = Person.objects.filter(date=date)
+            students = []
+            for check in checks:
+                user = check.user.username
+                if user not in students:
+                    students.append(user)
+            return render(request, "edit_account.html", {'students': students, "date" : date})
+    else:
+        form = EditPersonForm()
+
+    return render(request, "edit_account.html", {'form': form})
 
 
 def teacher(request):
@@ -33,3 +76,17 @@ def lecture(request, week_number, lecture_time):
         'lecture_time': lecture_time
     }
     return render(request, "lecture.html", data)
+
+
+@csrf_exempt
+def lecture_fragment(request):
+    if request.method == 'POST':
+        data_in = json.loads(request.body)
+        if data_in['want_lecture'] == 'yes':
+            data = {
+                'week': data_in['week'],
+                'lecture': data_in['lecture'],
+                'title': data_in['title'],
+                'slides': data_in['slides']
+            }
+            return render_to_response('lecture_fragment.html', data)

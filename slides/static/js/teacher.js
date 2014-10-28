@@ -2,28 +2,77 @@ $(document).ready(function () {
 
     var path = window.location.pathname.split('/').slice(2).join('/');
     var slideStuff = window.location.pathname.split('/').slice(2, 4);
-    console.log(slideStuff);
-
     var url = '/' + path;
+
     $.ajax({
         url: url,
         type: 'GET',
         success: function (response) {
-//            $('.main').html($(response).find('h1').text());
-//            $('.main').append($(response).find('h2').text());
-            var data = {
-                'slide_stuff': slideStuff,
-                'title': $(response).find('h1').text(),
-                'slides': $(response).find('h2')
-            };
-            $('.main').load("/lecture_fragment", data);
+            var slides = [];
+//            var slides = {};
+//            $(response).find('h2').each(function() {
+//                slides.push($( this).text().trim());
+//            });
+            var i = 0;
+            var j = 0;
+            var k = 0;
+            $(response).find('section').each(function() {
+//                console.log($( this).find('h2'));
+//                console.log($( this).find('h2').length);
+                if (j != 0){
+                    k++;
+                    j--;
+                }
+                console.log(i, k, j);
+                if($(this).find('h2:first-child').length > 1){
+                    j = $(this).find('h2').length;
+                    k = -1;
+                    console.log('block', i, k, j);
+                }
+                else if($( this).find('h2:first-child').length == 1){
+                    slides.push({
+                        'slide_title':$(this).find('h2:first-child').text().trim(),
+                        'slide_number':i,
+                        'slide_sub_number':k
+                    });
+                    console.log('save', i, k, j);
+                }
 
+                if (j == 0){
+                    i++;
+                    j = 0;
+//                    k = 0;
+                }
+
+
+            });
+            var data = {
+                'want_lecture': 'yes',
+                'week': slideStuff[0].slice(4),
+                'lecture': slideStuff[1],
+                'title': $(response).find('h1').first().text().trim(),
+                'slides': slides
+            };
+//             console.log($(response).find('h1').first());
+            lecture(data);
         },
         error: function (response) {
             console.log(response);
         }
     });
-//    });
 
+    var lecture = function(data) {
+        $.ajax({
+            url: '/lecture_fragment/',
+            type: 'POST',
+            data: JSON.stringify(data),
+            success: function (response) {
+                $('.main').html(response);
 
+            },
+            error: function (response) {
+                console.log(response);
+            }
+        });
+    };
 });

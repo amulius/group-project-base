@@ -94,7 +94,7 @@
                         {% if user.authenticated %}
                             <button id="btn_action" type="button" class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#myModal">Action</button>
                         {% else %}
-                            <button id="btn_action" type="button" class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#myModal">Student Login</button>
+                            <a href="{% url 'slides.views.edit_account' %}"><button id="btn_action" type="button" class="btn btn-primary btn-lg btn-block">Student Login</button></a>
                         {% endif %}
                     </div>
                     </div>
@@ -110,6 +110,8 @@
                     </div>
                     <a id="yetiLogo" href="http://www.yetihq.com/"><img src="{% static "img/yeti-power.png" %}"></a>
                     {% block edit_account %}
+                    {% endblock %}
+                    {% block register %}
                     {% endblock %}
                 </section>
             {% endblock %}

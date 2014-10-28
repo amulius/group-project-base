@@ -32,15 +32,16 @@ def edit_account(request):
     if request.method == 'POST':
         form = EditPersonForm(request.POST)
         if form.is_valid():
-            date = request.POST['date']
-            print date
-            checks = Person.objects.filter(date=date)
-            students = []
-            for check in checks:
-                user = check.user.username
-                if user not in students:
-                    students.append(user)
-            return render(request, "edit_account.html", {'students': students, "date" : date})
+            real_name = request.POST["real_name"]
+
+            # names = real_name.split()
+            # username = self.Person.objects["username"]
+            # user = Person.objects.get(username=username)
+            # user.first_name = names[0]
+            # user.last_name = names[1]
+            # user.save()
+
+            return redirect("slides_home")
     else:
         form = EditPersonForm()
 

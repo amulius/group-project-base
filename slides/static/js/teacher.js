@@ -9,40 +9,35 @@ $(document).ready(function () {
         type: 'GET',
         success: function (response) {
             var slides = [];
-//            var slides = {};
-//            $(response).find('h2').each(function() {
-//                slides.push($( this).text().trim());
-//            });
             var i = 0;
             var j = 0;
             var k = 0;
-            $(response).find('section').each(function() {
-//                console.log($( this).find('h2'));
-//                console.log($( this).find('h2').length);
-                if (j != 0){
-                    k++;
-                    j--;
+            console.log($(response).find('.slides>section'));
+            $(response).find('.slides>section').each(function() {
+//                if (j != 0){
+//                    k++;
+//                    j--;
+//                }
+//                console.log(i, k, j);
+                if($(this).find('h2').length > 1){
+//                    j = $(this).find('h2').length;
+//                    k = -1;
+//                    console.log('block', i, k, j);
                 }
-                console.log(i, k, j);
-                if($(this).find('h2:first-child').length > 1){
-                    j = $(this).find('h2').length;
-                    k = -1;
-                    console.log('block', i, k, j);
-                }
-                else if($( this).find('h2:first-child').length == 1){
+                else if($( this).find('h2').length == 1){
                     slides.push({
-                        'slide_title':$(this).find('h2:first-child').text().trim(),
+                        'slide_title':$(this).find('h2').text().trim(),
                         'slide_number':i,
                         'slide_sub_number':k
                     });
-                    console.log('save', i, k, j);
+//                    console.log('save', i, k, j);
                 }
 
-                if (j == 0){
-                    i++;
-                    j = 0;
-//                    k = 0;
-                }
+//                if (j == 0){
+//                    i++;
+//                    j = 0;
+////                    k = 0;
+//                }
 
 
             });

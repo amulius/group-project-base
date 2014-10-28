@@ -29,13 +29,19 @@ class PersonForm(UserCreationForm):
         )
 
 
-class EditPersonForm(forms.Form):
+class EditPersonForm(forms.ModelForm):
     email = forms.EmailField(required=True)
     real_name = forms.CharField(required=True)
+    password1 = forms.CharField(label=("Password"),
+        widget=forms.PasswordInput)
+    password2 = forms.CharField(label=("Password confirmation"),
+        widget=forms.PasswordInput,
+        help_text=("Enter the same password as above, for verification."))
+    image = forms.ImageField(label=("Image"))
 
     class Meta:
         model = Person
-        fields = ("real_name", "email", "password1", "password2", "image")
+        fields = ("email", "password1", "password2", "image")
 
     def clean_username(self):
         # Since User.username is unique, this check is redundant,

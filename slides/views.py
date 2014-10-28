@@ -34,12 +34,11 @@ def edit_account(request):
         if form.is_valid():
             real_name = request.POST["real_name"]
 
-            # names = real_name.split()
-            # username = self.Person.objects["username"]
-            # user = Person.objects.get(username=username)
-            # user.first_name = names[0]
-            # user.last_name = names[1]
-            # user.save()
+            names = real_name.split()
+            current_user = request.user
+            current_user.first_name = names[0]
+            current_user.last_name = names[1]
+            current_user.save()
 
             return redirect("slides_home")
     else:

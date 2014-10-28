@@ -40,7 +40,7 @@ def edit_account(request):
             real_name = request.POST["real_name"]
 
             names = real_name.split()
-            current_user = request.user
+            current_user = Person.objects.get(user=request.user)
             current_user.first_name = names[0]
             current_user.last_name = names[1]
             current_user.save()

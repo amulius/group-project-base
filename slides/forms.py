@@ -13,7 +13,7 @@ class PersonForm(UserCreationForm):
     email = forms.EmailField(required=True)
     class Meta:
         model = Person
-        fields = ("username", "email", "password1", "password2", "image")
+        fields = ("username", "first_name", "last_name", "email", "password1", "password2", "image")
 
     def clean_username(self):
         # Since User.username is unique, this check is redundant,
@@ -50,7 +50,7 @@ class EditPersonForm(forms.Form):
         raise forms.ValidationError(
             self.error_messages['duplicate_username'],
             code='duplicate_username',
-        )git 
+        )
 
 
 #

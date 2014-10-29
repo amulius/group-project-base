@@ -13,7 +13,7 @@ class PersonForm(UserCreationForm):
     email = forms.EmailField(required=True)
     class Meta:
         model = Person
-        fields = ("username", "email", "password1", "password2", "image")
+        fields = ("image", "username", "first_name", "last_name", "email", "password1", "password2")
 
     def clean_username(self):
         # Since User.username is unique, this check is redundant,
@@ -37,7 +37,7 @@ class EditPersonForm(forms.Form):
 
     class Meta:
         model = Person
-        fields = ("real_name", "email", "password1", "password2", "image")
+        fields = ("email", "password1", "password2", "image")
 
     def clean_username(self):
         # Since User.username is unique, this check is redundant,

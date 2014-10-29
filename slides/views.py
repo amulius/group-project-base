@@ -39,11 +39,17 @@ def edit_account(request):
         form = EditPersonForm(request.POST, request.FILES)
         if form.is_valid():
             real_name = request.POST["real_name"]
+            email = request.POST["email"]
+            password1 = request.POST["password1"]
+            password2 = request.POST["password2"]
 
             names = real_name.split()
-            current_user = Person.objects.get(user=request.user)
+            current_user = Person.objects.get(username=request.user)
             current_user.first_name = names[0]
             current_user.last_name = names[1]
+            current_user.email = email
+            current_user.password1 = password1
+            current_user.password2 = password2
             current_user.save()
 
             return redirect("slides_home")

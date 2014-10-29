@@ -5096,6 +5096,7 @@ button.close {
   overflow-y: scroll;
   -webkit-overflow-scrolling: touch;
   outline: 0;
+  margin-top: 75px;
 }
 .modal.fade .modal-dialog {
   -webkit-transition: -webkit-transform .3s ease-out;
@@ -5122,7 +5123,7 @@ button.close {
   background-clip: padding-box;
   border: 1px solid #999;
   border: 1px solid rgba(0, 0, 0, .2);
-  border-radius: 6px;
+  border-radius: 18px;
   outline: none;
   -webkit-box-shadow: 0 3px 9px rgba(0, 0, 0, .5);
           box-shadow: 0 3px 9px rgba(0, 0, 0, .5);
@@ -5146,8 +5147,11 @@ button.close {
 }
 .modal-header {
   min-height: 16.42857143px;
-  padding: 15px;
-  border-bottom: 1px solid #e5e5e5;
+  padding-top: 15px;
+  padding-bottom: 5px;
+  padding-left: 15px;
+  padding-right: 15px;
+  /*border-bottom: 1px solid #e5e5e5;*/
 }
 .modal-header .close {
   margin-top: -2px;
@@ -5191,7 +5195,7 @@ button.close {
 }
 @media (min-width: 992px) {
   .modal-lg {
-    width: 900px;
+    width: 810px;
   }
 }
 .tooltip {

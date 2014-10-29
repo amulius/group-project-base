@@ -35,7 +35,6 @@ def register(request):
 
 # @login_required
 def edit_account(request):
-    current_user = Person.objects.get(username=request.user)
     if request.method == 'POST':
         form = EditPersonForm(request.POST, request.FILES)
         if form.is_valid():
@@ -55,9 +54,16 @@ def edit_account(request):
 
             return redirect("edit_account")
     else:
-        form = EditPersonForm()
+        current_user = Person.objects.get(username=request.user)
+        data = {
+            'real_name': current_user.first_name + ' ' + current_user.last_name,
+            'email': current_user.email,
+            'password1': '',
+            'password2': ''
+        }
+        form = EditPersonForm(initial=data)
 
-    return render(request, "edit_account.html", {'form': form, 'real_name': current_user.first_name + ' ' + current_user.last_name, 'email': current_user.email, 'password1': '', 'password2': ''})
+    return render(request, "edit_account.html", {'form': form, })
     # person = Person.objects.get(id=person_id)
     # # We still check to see if we are submitting the form
     # if request.method == "POST":

@@ -33,7 +33,7 @@
 
     <!-- For syntax highlighting -->
     <link rel="stylesheet" href="{% static "css/zenburn.css" %}">
-    <link rel="stylesheet" href="{% static "css/bootstrap.css" %}">
+    <link rel="stylesheet" href="{% static "css/bootstrap.min.css" %}">
     <link rel="stylesheet" href="{% static "css/overlay.css" %}">
 
     <link rel="stylesheet/less" type="text/css" media="all" href="{% static "less/style.less" %}" />
@@ -52,36 +52,34 @@
 
 <body class="{% block body_css %}{% endblock body_css %}">
     <!--  Modal start  -->
-    <div class="container">
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-lg">
         <div class="modal-content">
           <div class="modal-header">
-                <div class="row">
-                <div class="col-lg-7 col-md-7 modal-title" id="myModalLabel"></div>
-                <div align="right" class="col-lg-4 col-lg-offset-1 col-md-4 col-md-offset-1 modal-title" id="myProfile" data-username="profile name"><img src="{% static 'img/default.png' %}"/>profile nameprofile name</div>
-                </div>
+
+                <span class="modal-title" id="myModalLabel"></span>
+                <span class="modal-title" id="myProfile" data-username="{{ user.username }}"><img src="{{ user.image.url }}"/>{{ user.first_name }} {{ user.last_name }}</span><!-- {{ user.first_name }} {{ user.last_name }}-->
           </div>
           <div class="modal-body">
-                <div class="row">
-                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" style="margin-top: 5px;"><button id="help" type="button" class="btn btn-danger btn-lg btn-block"><img src="{% static 'img/Assets/Exclamation-hollow.png' %}"/> <strong>Help</strong></button></div>
-                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" style="margin-top: 5px;"><button id="done" type="button" class="btn btn-success btn-lg btn-block"><img src="{% static 'img/Assets/Checkmark-HOLLOW.png' %}"/> <strong>Done</strong></button></div>
-                </div>
 
-                <div class="row" style="padding: 15px;">
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" id="question">
-                    <div id="q_title"><img src="{% static 'img/Assets/Questionmark-hollow.png' %}"/> Question</div>
+                <button id="help" type="button" class="btn btn-danger btn-lg action_button"><img src="{% static 'img/Assets/Exclamation-hollow.png' %}"/> Help</button>
+                <button id="done" type="button" class="btn btn-success btn-lg action_button"><img src="{% static 'img/Assets/Checkmark-HOLLOW.png' %}"/> Done</button>
+                <br><br>
+{#                <button id="question" type="button" class="btn btn-warning btn-lg">Question</button>#}
+                <div id="question">
+                    <img src="{% static 'img/Assets/Questionmark-hollow.png' %}"/><span> Question</span>
                     <form role="form">
-                      <textarea id="the_question" class="form-control text_field" rows="4"></textarea>
-                        <button id="submit_q" type="button" class="btn btn-link">SUBMIT</button>
+                      <textarea id="the_question" class="form-control" rows="4"></textarea>
                     </form>
-
-                </div>
+                    <button id="submit_q" type="button" class="btn btn-default action_button">Submit</button>
                 </div>
           </div>
+{#          <div class="modal-footer">#}
+{#            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>#}
+{#            <button type="button" class="btn btn-primary">Save changes</button>#}
+{#          </div>#}
         </div>
       </div>
-    </div>
     </div>
     <!--  Modal end  -->
 
@@ -89,7 +87,7 @@
 
         <!-- Any section element inside of this container is displayed as a slide -->
         <div class="slides">
-            <div class="row" id="runningTitle">
+            <div id="runningTitle">
                 <div class="col-7">
                     <a href="#">{% block running_title %}{% endblock %}</a>
                 </div>
@@ -116,10 +114,8 @@
                 <section class="titleSlide" data-background="#168eae">
                     <h1>{% block presentation_title%}{% endblock %}</h1>
                     <a id="yetiLogo" href="http://www.yetihq.com/"><img src="{% static "img/yeti-power.png" %}"></a>
-
                     {% block edit_account %}
                     {% endblock %}
-
                     {% block register %}
                     {% endblock %}
                 </section>

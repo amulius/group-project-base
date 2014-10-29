@@ -83,15 +83,14 @@ AUTH_USER_MODEL = 'slides.Person'
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
 
-STATIC_URL = '/static/'
 
 LOGIN_URL = 'login'
 
+STATIC_URL = '/static/'
+
 PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), '..'))
-print "Project Root::: {}".format(PROJECT_ROOT)
 MEDIA_URL = "/media/"
 MEDIA_ROOT = os.path.join(PROJECT_ROOT, "static", *MEDIA_URL.strip("/").split("/"))
-print "Media Root::: {}".format(MEDIA_ROOT)
 
 try:
     from local_settings import *

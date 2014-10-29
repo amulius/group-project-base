@@ -53,6 +53,16 @@ urlpatterns = patterns('',
     url(r'^done/$', 'slides.views.done', name='done'),
     url(r'^help/$', 'slides.views.help', name='help'),
     url(r'^question/$', 'slides.views.question', name='question'),
+
+    url(r'^teacher_index/$', 'slides.views.teacher_index', name='teacher_index'),
+    url(r'^lecture_fragment/$', 'slides.views.lecture_fragment', name='lecture_fragment'),
+    url(r'^details/$', 'slides.views.details', name='details'),
+
+    url(r'^student_actions/$', 'slides.views.student_actions', name='student_actions'),
+    url(r'^teacher/week(?P<week_number>\d+)/(?P<lecture_time>.+)/$', 'slides.views.lecture', name="lecture"),
+    url(r'^teacher/week(?P<week_number>\d+)/(?P<lecture_time>.+)/done/$', 'slides.views.done', name="done"),
+    url(r'^teacher/week(?P<week_number>\d+)/(?P<lecture_time>.+)/help/$', 'slides.views.help', name="help"),
+    url(r'^teacher/week(?P<week_number>\d+)/(?P<lecture_time>.+)/questions/$', 'slides.views.question', name="question"),
 )
 
 if settings.DEBUG:

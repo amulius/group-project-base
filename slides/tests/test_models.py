@@ -1,31 +1,57 @@
-from django.test import TestCase
-from factories import PlayerFactory, WarGameFactory
-from ..models import Card, WarGame
+from django.contrib.staticfiles import finders
+from django.contrib.staticfiles.storage import staticfiles_storage
+from django.core.urlresolvers import reverse
+from django.test import TestCase, Client
+from slides.models import Slide, Question, Person, Help, Done
 
 
-class CardModelTestCase(TestCase):
+class TestModels(TestCase):
     def setUp(self):
-        self.card = Card.objects.create(suit=Card.CLUB, rank="jack")
-        self.card_higher = Card.objects.create(suit=Card.CLUB, rank="ace")
+        self.a_student = Person.objects.create_user("Niki", "niki@rocketu.com","password")
+        self.a_slide = Slide.objects.create(name="mySlide")
 
-    def test_get_ranking(self):
-        self.assertEqual(self.card.get_ranking(), 11)
+    def test_slide(self):
+        self.assertEqual(self.a_slide.name, "mySlide")
 
-    def test_war_result(self):
-        self.assertEquals(self.card_higher.get_war_result(self.card), 1)
-        self.assertEquals(self.card_higher.get_war_result(self.card_higher), 0)
-        self.assertEquals(self.card.get_war_result(self.card_higher), -1)
+    def test_question(self):
+        a_question = Question.objects.create(student=self.a_student, answered=False, text="what the heck")
+        self.assertEqual(a_question.answered, False)
+        self.assertEqual(a_question.text, "what the heck")
 
+    def test_help(self):
+        a_help = Help.objects.create(student=self.a_student, slide=self.a_slide, helped=False)
+        self.assertFalse(a_help.helped)
 
-class PlayerModelTestCase(TestCase):
-    def test_get_ties(self):
-        user = PlayerFactory.create(username='test-user', email='test@test.com', password='password')
-        WarGameFactory.create_batch(4, player=user, result=WarGame.TIE)
-        self.assertEqual(user.get_results(WarGame.TIE), 4)
+    # def test_done(self):
+    #     a_done = Done.objects.create(student=self.a_student, slide=self.a_slide, done=False)
+    #     self.assertEqual(a_done.done)
 
-    def test_get_record_display(self):
-        user = PlayerFactory.create(username='test-user', email='test@test.com', password='password')
-        WarGameFactory.create_batch(2, player=user, result=WarGame.WIN)
-        WarGameFactory.create_batch(3, player=user, result=WarGame.LOSS)
-        WarGameFactory.create_batch(4, player=user, result=WarGame.TIE)
-        self.assertEqual(user.get_record_display(), "2-3-4")
+class QuestionListTest(TestCase):
+    def setUp(self):
+        self.c = Client()
+        self.a_student = Person.objects.create_user("Niki", "niki@rocketu.com","password")
+        self.a_slide = Slide.objects.create(name="mySlide")
+
+    def test_question_response(self):
+        response = self.c.get('/question/')
+        self.assertEqual(response.status_code, 200)
+
+    # def test_question_create(self):
+    #     response = self.c.get(reverse('question_create'))
+    #     self.assertEqual(response.status_code, 302)
+    #
+    #     self.c.login(username='test', password='test')
+    #     response = self.c.get(reverse('question_create'))
+    #     self.assertEqual(response.status_code, 200)
+
+    # def test_question_template_context(self):
+    #     Question.objects.create(student=self.a_student, answered=False, text="what the heck")
+    #     Question.objects.create(student=self.a_student, answered=False, text="dang this is hard")
+    #     response = self.c.get(reverse('question'))
+    #     self.assertEqual(len(response.context['question']), 2)
+
+# class StaticTest(TestCase):
+#     def test_images(self):
+#         abs_path = finders.find('static/img/Assets/Exclamation-HOLLOW.png')
+#         self.assertTrue(staticfiles_storage.exists(abs_path))
+

@@ -15,71 +15,26 @@ $(document).ready(function () {
         $('#myModalLabel').text(title);
     });
 
-    // HELP BUTTON
-    $('#help').on('click', function() {
+
+    $('.action_button').on('click', function() {
     var username = $('#myProfile').data('username');
-    var url = window.location.href; // or $(location).attr('href');
-
-        console.log(url);
-        $.ajax({
-            url: '',
-            type: 'POST',
-            dataType: 'json',
-            data: {
-                'username': username,
-                'url': url
-            },
-            success: function(response) {
-                console.log(response);
-
-            },
-            error: function(response) {
-                console.log(response);
-            }
-        });
-    });
-
-    // DONE BUTTON
-    $('#done').on('click', function() {
-    var username = $('#myProfilel').data('username');
-    var url = window.location.href; // or $(location).attr('href');
-
-        console.log(url);
-        $.ajax({
-            url: '',
-            type: 'POST',
-            dataType: 'json',
-            data: {
-                'username': username,
-                'url': url
-            },
-            success: function(response) {
-                console.log(response);
-
-            },
-            error: function(response) {
-                console.log(response);
-            }
-        });
-    });
-
-    // FORM SUBMIT BUTTON
-    $('#submit_q').on('click', function() {
-    var username = $('#myProfile').data('username');
-    var url = window.location.href; // or $(location).attr('href');
+    var url = window.location.pathname + window.location.hash; // or $(location).attr('href');
     var question = $('#the_question').val();
+    var action = $(this).attr('id');
+    var data = {
+                'action': action,
+                'username': username,
+                'slide': url,
+                'question_text': question
+            };
+
         console.log(url);
         $.ajax({
-            url: '',
+            url: '/student_actions/',
             type: 'POST',
             dataType: 'json',
-            data: {
-                'username': username,
-                'url': url,
-                'question': question
-            },
+            data: JSON.stringify(data),
             success: function(response) {
-                $('#the_question').val('');
                 console.log(response);
 
             },

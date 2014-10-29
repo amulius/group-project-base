@@ -55,7 +55,7 @@ $(document).ready(function () {
     });
 
     var slide_data = function(w,l,n,sN) {
-        var path = 'week'+w+'/'+l+'/#/'+n;
+        var path = '/week'+w+'/'+l+'/#/'+n;
         if(sN){
             path += '/'+sN;
         }

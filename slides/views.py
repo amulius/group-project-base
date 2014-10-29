@@ -1,17 +1,17 @@
 import json
 from django.contrib.auth import authenticate, login
+from django.http import JsonResponse
 from django.shortcuts import render, redirect, render_to_response
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from slides.forms import PersonForm, EditPersonForm
-from slides.models import Person
-
+from slides.models import Person, Done, Slide, Help, Question
 
 
 def test_overlay(request):
-
     return render(request, "test_overlay.html")
+
 
 def register(request):
     if request.method == 'POST':
@@ -32,7 +32,8 @@ def register(request):
         'form': form,
     })
 
-@login_required
+
+# @login_required
 def edit_account(request):
     if request.method == 'POST':
         form = EditPersonForm(request.POST, request.FILES)
@@ -66,6 +67,7 @@ def edit_account(request):
     #     form = EditPersonForm(instance=person)
     # data = {"person": person, "form": form}
     # return render(request, "edit_account.html", data)
+
 
 def teacher(request):
     return render(request, "teacher.html")
@@ -109,3 +111,38 @@ def details(request):
         data_in = json.loads(request.body)
         if data_in['want'] == 'basic':
             return render_to_response('basic_info_fragment.html', data_in)
+
+
+@csrf_exempt
+def student_actions(request):
+    # print request
+    if request.method == 'POST':
+        data_in = json.loads(request.body)
+        if data_in['action'] == 'done':
+            print 'done'
+            print data_in
+            student = Person.objects.get(username=data_in['username'])
+            slide, created = Slide.objects.get_or_create(name=data_in['slide'])
+            Done.objects.create(student=student, slide=slide)
+            data = {
+                'return': 'good'
+            }
+        elif data_in['action'] == 'help':
+            print 'help'
+            print data_in
+            student = Person.objects.get(username=data_in['username'])
+            slide, created = Slide.objects.get_or_create(name=data_in['slide'])
+            Help.objects.create(student=student, slide=slide)
+            data = {
+                'return': 'good'
+            }
+        elif data_in['action'] == 'submit_q':
+            print 'submit_q'
+            print data_in
+            student = Person.objects.get(username=data_in['username'])
+            slide, created = Slide.objects.get_or_create(name=data_in['slide'])
+            Question.objects.create(student=student, slide=slide, text=data_in['question_text'])
+            data = {
+                'return': 'good'
+            }
+        return JsonResponse(data)

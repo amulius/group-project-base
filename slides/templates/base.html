@@ -58,12 +58,12 @@
           <div class="modal-header">
 
                 <span class="modal-title" id="myModalLabel"></span>
-                <span class="modal-title" id="myProfile" data-username="profile name"><img src="{% static 'img/default.png' %}"/>profile name</span><!-- {{ user.first_name }} {{ user.last_name }}-->
+                <span class="modal-title" id="myProfile" data-username="{{ user.username }}"><img src="{{ user.image.url }}"/>{{ user.first_name }} {{ user.last_name }}</span><!-- {{ user.first_name }} {{ user.last_name }}-->
           </div>
           <div class="modal-body">
 
-                <button id="help" type="button" class="btn btn-danger btn-lg"><img src="{% static 'img/Assets/Exclamation-hollow.png' %}"/> Help</button>
-                <button id="done" type="button" class="btn btn-success btn-lg"><img src="{% static 'img/Assets/Checkmark-HOLLOW.png' %}"/> Done</button>
+                <button id="help" type="button" class="btn btn-danger btn-lg action_button"><img src="{% static 'img/Assets/Exclamation-hollow.png' %}"/> Help</button>
+                <button id="done" type="button" class="btn btn-success btn-lg action_button"><img src="{% static 'img/Assets/Checkmark-HOLLOW.png' %}"/> Done</button>
                 <br><br>
 {#                <button id="question" type="button" class="btn btn-warning btn-lg">Question</button>#}
                 <div id="question">
@@ -71,7 +71,7 @@
                     <form role="form">
                       <textarea id="the_question" class="form-control" rows="4"></textarea>
                     </form>
-                    <button id="submit_q" type="button" class="btn btn-default">Submit</button>
+                    <button id="submit_q" type="button" class="btn btn-default action_button">Submit</button>
                 </div>
           </div>
 {#          <div class="modal-footer">#}

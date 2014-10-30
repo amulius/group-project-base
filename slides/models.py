@@ -25,7 +25,7 @@ class Done(models.Model):
     slide = models.ForeignKey(Slide, related_name='is_done', null=True, blank=True)
 
     def __unicode__(self):
-        return u"{}, {}".format(self.student, self.date)
+        return u"{}, {}, {}".format(self.student, self.slide, self.date)
 
 
 class Help(models.Model):

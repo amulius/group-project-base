@@ -110,7 +110,20 @@ def details(request):
     if request.method == 'POST':
         data_in = json.loads(request.body)
         if data_in['want'] == 'basic':
-            return render_to_response('basic_info_fragment.html', data_in)
+            slide = Slide.objects.filter(name=data_in['slide'])
+            if slide:
+                data = {
+                    'done': Done.objects.filter(slide=slide[0]).count(),
+                    'help': Help.objects.filter(slide=slide[0]).count(),
+                    'question': Question.objects.filter(slide=slide[0]).count(),
+                }
+            else:
+                data = {
+                    'done': 0,
+                    'help': 0,
+                    'question': 0,
+                }
+            return render_to_response('basic_info_fragment.html', data)
 
 
 @csrf_exempt

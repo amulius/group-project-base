@@ -35,7 +35,7 @@ class Help(models.Model):
     slide = models.ForeignKey(Slide, related_name='needs_help', null=True, blank=True)
 
     def __unicode__(self):
-        return u"{}, {}".format(self.student, self.date)
+        return u"{}, {}, {}".format(self.student, self.slide, self.date)
 
 
 class Question(models.Model):
@@ -46,6 +46,6 @@ class Question(models.Model):
     slide = models.ForeignKey(Slide, related_name='questions', null=True, blank=True)
 
     def __unicode__(self):
-        return u"{}, {}".format(self.student, self.date)
+        return u"{}, {}, {}".format(self.student, self.slide, self.date)
 
 

@@ -1,0 +1,22 @@
+{% load staticfiles %}
+<div class="panel panel-default paneldone">
+    <p class="donepage">{{ done_count }} Done</p>
+</div>
+<div class="panel-body body-done">
+    {% if dones %}
+    {% for done in dones %}
+    <div><img class="user" src="{{ done.student.image.url }}"/></div><p> {{ done.student.first_name }} {{ done.student.last_name }}</p>
+    <p class="date">{{ done.date }}</p>
+    {% endfor %}
+    {% endif %}
+</div>
+<div class="panel panel-default paneldone">
+    <p class="donepage">{{ not_dones.count }} Not Done</p>
+</div>
+<div class="panel-body body-done">
+    {% if not_dones %}
+    {% for student in not_dones %}
+    <div><img class="user" src="{{ student.image.url }}"/></div><p> {{ student }}</p>
+    {% endfor %}
+    {% endif %}
+</div>

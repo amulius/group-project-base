@@ -28,7 +28,7 @@ margin: 20px;
     color: lightgray;
 }
 .done > a{
-    font-family: arial, helvetica, sans-serif;
+    font-family: helvetica, arial, sans-serif;
     color: #43de6c;
     font-size: 2.5em;
 }
@@ -82,7 +82,7 @@ max-width: 100%;
 }
 
 .date {
-    font-family: arial, helvetica, sans-serif;
+    font-family: helvetica, arial, sans-serif;
     color: #dad9db;
     font-size: 1em;
     margin-left: 50px;
@@ -109,7 +109,7 @@ max-width: 100%;
 /*help page*/
 
 .helppage {
-    font-family: arial, helvetica, sans-serif;
+    font-family: helvetica, arial, sans-serif;
     color: #d53038;
     font-size: 1em;
 }
@@ -121,7 +121,7 @@ max-width: 100%;
 
 }
 .panelhelp a {
-    font-family: arial, helvetica, sans-serif;
+    font-family: helvetica, arial, sans-serif;
     color: #d53038;
     font-size: 2em;
     font-weight: bold;
@@ -142,7 +142,7 @@ max-width: 100%;
 /*questions page*/
 
 .questionpage {
-    font-family: arial, helvetica, sans-serif;
+    font-family: helvetica, arial, sans-serif;
     color: #c9aa18;
     font-size: 1em;
 }
@@ -154,20 +154,20 @@ max-width: 100%;
 
 }
 .panelquestion a {
-    font-family: arial, helvetica, sans-serif;
+    font-family: helvetica, arial, sans-serif;
     color: #c9aa18;
     font-size: 2em;
     font-weight: bold;
 
 }
 
-#answer  {
+#answer, .answer  {
     border-radius:0;
     background-color: #c9aa18 !important;
     color:white;
 }
 
-#answered {
+#answered, .answered {
     border-color: #c9aa18;
     background-color:white !important;
     color: #c9aa18;
@@ -176,7 +176,7 @@ max-width: 100%;
 }
 
 .text {
-    font-family: arial, helvetica, sans-serif;
+    font-family: helvetica, arial, sans-serif;
     color: #9c9c9c;
     font-size: 1em;
     margin-left: 50px;

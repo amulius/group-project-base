@@ -64,22 +64,6 @@ def edit_account(request):
         form = EditPersonForm(initial=data)
 
     return render(request, "edit_account.html", {'form': form, })
-    # person = Person.objects.get(id=person_id)
-    # # We still check to see if we are submitting the form
-    # if request.method == "POST":
-    #     # We prefill the form by passing 'instance', which is the specific
-    #     # object we are editing
-    #     form = EditPersonForm(request.POST, request.FILES, instance=person)
-    #     if form.is_valid():
-    #         if form.save():
-    #             return redirect("slides_home")
-    # # Or just viewing the form
-    # else:
-    #     # We prefill the form by passing 'instance', which is the specific
-    #     # object we are editing
-    #     form = EditPersonForm(instance=person)
-    # data = {"person": person, "form": form}
-    # return render(request, "edit_account.html", data)
 
 
 def teacher(request):
@@ -159,3 +143,24 @@ def student_actions(request):
                 'return': 'good'
             }
         return JsonResponse(data)
+
+
+def login(request):
+    if request.method == 'POST':
+        form = PersonForm(request.POST, request.FILES)
+        if form.is_valid():
+            username = request.POST["username"]
+            password = request.POST["password1"]
+            form.save()
+            user = authenticate(username=username, password=password)
+            if user is not None:
+                if user.is_active:
+                    login(request, user)
+                    return redirect("slides_home")
+    else:
+        form = PersonForm()
+
+    return render(request, "registration/login.html", {
+        'form': form,
+    })
+

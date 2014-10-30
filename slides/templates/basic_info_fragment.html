@@ -1,11 +1,11 @@
 {% load staticfiles %}
 
 <div class="panel-body">
-   <p class="done"><a href="/done{{ slide }}"><b>{{ done }}</b> <i>done</i><img src="{% static 'img/Assets/Checkmark-HOLLOW.png' %}"/></a></p>
+   <p class="done"><a href="/done{{ slide }}"><span>{{ done }}</span> <i>done</i><img src="{% static 'img/Assets/Checkmark-HOLLOW.png' %}"/></a></p>
 </div>
 <div class="panel-body">
-   <p class="questions"><a href="/question{{ slide }}"><b>{{ question }}</b> <i>questions</i> <img src="{% static 'img/Assets/Questionmark-hollow.png' %}"/></a></p>
+   <p class="questions"><a href="/question{{ slide }}"><span>{{ question }}</span> <i>questions</i> <img src="{% static 'img/Assets/Questionmark-hollow.png' %}"/></a></p>
 </div>
 <div class="panel-body">
-   <p class="help"><a href="/help{{ slide }}"><b>{{ help }}</b> <i>needs help</i> <img src="{% static 'img/Assets/Exclamation-hollow.png' %}"/></a></p>
+   <p class="help"><a href="/help{{ slide }}"><span>{{ help }}</span> <i>needs help</i> <img src="{% static 'img/Assets/Exclamation-hollow.png' %}"/></a></p>
 </div>

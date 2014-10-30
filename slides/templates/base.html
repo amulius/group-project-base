@@ -51,42 +51,16 @@
 </head>
 
 <body class="{% block body_css %}{% endblock body_css %}">
-    <!--  Action Modal start  -->
-    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-          <div class="modal-header">
 
-                <span class="modal-title" id="myModalLabel"></span>
-                <span class="modal-title" id="myProfile" data-username="{{ user.username }}"><img src="{{ user.image.url }}"/>{{ user.first_name }} {{ user.last_name }}</span><!-- {{ user.first_name }} {{ user.last_name }}-->
-          </div>
-          <div class="modal-body">
+    <!--  Modal action start  -->
+    {% include 'includes/modal_action.html' %}
+    <!--  Modal action end  -->
 
-                <button id="help" type="button" class="btn btn-danger btn-lg action_button"><img src="{% static 'img/Assets/Exclamation-hollow.png' %}"/> Help</button>
-                <button id="done" type="button" class="btn btn-success btn-lg action_button"><img src="{% static 'img/Assets/Checkmark-HOLLOW.png' %}"/> Done</button>
-                <br><br>
-{#                <button id="question" type="button" class="btn btn-warning btn-lg">Question</button>#}
-                <div id="question">
-                    <img src="{% static 'img/Assets/Questionmark-hollow.png' %}"/><span> Question</span>
-                    <form role="form">
-                      <textarea id="the_question" class="form-control" rows="4"></textarea>
-                    </form>
-                    <button id="submit_q" type="button" class="btn btn-default action_button">Submit</button>
-                </div>
-          </div>
-{#          <div class="modal-footer">#}
-{#            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>#}
-{#            <button type="button" class="btn btn-primary">Save changes</button>#}
-{#          </div>#}
-        </div>
-      </div>
-    </div>
-    <!--  Modal end  -->
-
+    <!--  Modal login start  -->
     {% include 'includes/modal_login.html' %}
+    <!--  Modal login end  -->
 
     <div class="reveal">
-
         <!-- Any section element inside of this container is displayed as a slide -->
         <div class="slides">
             <div id="runningTitle">
@@ -101,9 +75,9 @@
                     <div class="col-lg-4 col-lg-offset-8 col-md-4 col-md-offset-8 col-sm-4 col-sm-offset-8 col-xs-4 col-xs-offset-8">
 {#                        <button id="btn_action" type="button" class="btn btn-primary btn-lg btn-block popup-link" href="#" data-popup-target="#example-popup">Actions</button>#}
                         {% if user.is_authenticated %}
-                            <button id="btn_action" type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#myModal">Actions</button>
+                            <button id="btn_action" type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#modal_actions">Actions</button>
                         {% else %}
-                            <button id="btn_login" type="button" class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#myModal2">Student Login</button>
+                            <button id="btn_login" type="button" class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#modal_login">Student Login</button>
                         {% endif %}
                     </div>
                     </div>

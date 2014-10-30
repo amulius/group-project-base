@@ -30,10 +30,11 @@ class PersonForm(UserCreationForm):
 
 
 class EditPersonForm(forms.Form):
-    real_name = forms.CharField(required=True)
-    email = forms.EmailField(required=True)
-    password1 = forms.CharField(label=("Password"), widget=forms.PasswordInput)
-    password2 = forms.CharField(label=("Password confirmation"), widget=forms.PasswordInput)
+    real_name = forms.CharField(required=True, widget=forms.TextInput(attrs={'class': 'textb0x'}))
+    email = forms.EmailField(widget=forms.TextInput(attrs={'class': 'textb0x'}))
+    password1 = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'textb0x'}))
+    password2 = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'textb0x'}))
+    image = forms.ImageField()
 
     class Meta:
         model = Person
@@ -47,6 +48,7 @@ class LoginForm(forms.Form):
     class Meta:
         model = Person
         fields = ["username", "password1"]
+
 
     def clean_username(self):
         # Check for existing username

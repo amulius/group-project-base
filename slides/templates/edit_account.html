@@ -1,10 +1,14 @@
-{% extends "base.html" %}
+{% extends "base2.html" %}
+{% load staticfiles i18n %}
 
-{% block title_slide %}
+{% block account %}
     <section class="reveal">
-        <form method="post" action="." enctype="multipart/form-data" >
+
+    <h2>Edit Account</h2>
+
+        <form method="post" action="." enctype="multipart/form-data" style="margin-left: 350px; margin-top: 150px;" >
             {% csrf_token %}
-            <table width="100%" border="0" cellspacing="5" cellpadding="5">
+            <table border="0" cellspacing="5" cellpadding="5">
                 <tr><td><p><br></p></td></tr>
                 {% for field in form %}
                     <tr>

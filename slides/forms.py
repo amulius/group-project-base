@@ -29,7 +29,7 @@ class PersonForm(UserCreationForm):
         )
 
 
-class EditPersonForm(forms.ModelForm):
+class EditPersonForm(forms.Form):
     real_name = forms.CharField(required=True)
     email = forms.EmailField(required=True)
 
@@ -37,21 +37,34 @@ class EditPersonForm(forms.ModelForm):
         model = Person
         fields = ["image", "email", "password1", "password2"]
 
+    # def clean_username(self):
+    #     # Since User.username is unique, this check is redundant,
+    #     # but it sets a nicer error message than the ORM. See #13147.
+    #     username = self.cleaned_data["username"]
+    #     try:
+    #         Person.objects.get(username=username)
+    #     except Person.DoesNotExist:
+    #         return username
+    #     raise forms.ValidationError(
+    #         self.error_messages['duplicate_username'],
+    #         code='duplicate_username',
+    #     )
+
+
+class LoginForm(forms.Form):
+    class Meta:
+        model = Person
+        fields = ["username", "password1"]
+
     def clean_username(self):
         # Since User.username is unique, this check is redundant,
         # but it sets a nicer error message than the ORM. See #13147.
         username = self.cleaned_data["username"]
         try:
             Person.objects.get(username=username)
-        except Person.DoesNotExist:
+        except Person.DoesExist:
             return username
         raise forms.ValidationError(
-            self.error_messages['duplicate_username'],
-            code='duplicate_username',
+            self.error_messages['username_does_not_exist'],
+            code='username_does_not_exist',
         )
-
-
-class LoginForm(forms.ModelForm):
-    class Meta:
-        model = Person
-        fields = ["username", "password1"]

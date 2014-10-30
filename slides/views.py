@@ -1,16 +1,36 @@
 import json
 from django.contrib.auth import authenticate, login
 from django.http import JsonResponse
-from django.shortcuts import render, redirect, render_to_response
+from django.shortcuts import render_to_response
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
-from slides.forms import PersonForm, EditPersonForm
+from slides.forms import PersonForm, EditPersonForm, LoginForm
 from slides.models import Person, Done, Slide, Help, Question
 
 
 def test_overlay(request):
     return render(request, "test_overlay.html")
+
+
+def student_login(request):
+    if request.method == 'POST':
+        form = LoginForm(request.POST, request.FILES)
+        if form.is_valid():
+            username = request.POST["username"]
+            password = request.POST["password1"]
+            form.save()
+            user = authenticate(username=username, password=password)
+            if user is not None:
+                if user.is_active:
+                    login(request, user)
+                    return redirect("slides_home")
+    else:
+        form = LoginForm()
+
+    return render(request, "registration/login.html", {
+        'form': form,
+    })
 
 
 def register(request):
@@ -33,7 +53,7 @@ def register(request):
     })
 
 
-# @login_required
+@login_required
 def edit_account(request):
     if request.method == 'POST':
         form = EditPersonForm(request.POST, request.FILES)
@@ -145,22 +165,5 @@ def student_actions(request):
         return JsonResponse(data)
 
 
-def login(request):
-    if request.method == 'POST':
-        form = PersonForm(request.POST, request.FILES)
-        if form.is_valid():
-            username = request.POST["username"]
-            password = request.POST["password1"]
-            form.save()
-            user = authenticate(username=username, password=password)
-            if user is not None:
-                if user.is_active:
-                    login(request, user)
-                    return redirect("slides_home")
-    else:
-        form = PersonForm()
 
-    return render(request, "registration/login.html", {
-        'form': form,
-    })
 

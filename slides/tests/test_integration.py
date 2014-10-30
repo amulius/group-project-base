@@ -1,15 +1,18 @@
-# from django.test import TestCase
-# from django.core.urlresolvers import reverse
-# from django.http import HttpResponseRedirect
-# from mock import patch, Mock
-# from cards.tests.factories import PlayerFactory, WarGameFactory
-# from ..models import Player, WarGame
-# from ..utils import create_deck
-#
-#
-# class ViewTestCase(TestCase):
-#     def setUp(self):
-#         create_deck()
+from django.test import TestCase
+from django.core.urlresolvers import reverse
+from django.http import HttpResponseRedirect
+from slides.models import Person
+from slides.tests.factories import PersonFactory
+
+
+class ViewTestCase(TestCase):
+    def setUp(self):
+        pass
+
+    def test_lecture_page(self):
+        response = self.client.get(reverse('lecture'))
+        self.assertIn('<p>week_number</p>', response.content)
+        self.assertEqual(response.context['lecture'], response.content)
 #
 #     def test_deck_page(self):
 #         response = self.client.get(reverse('deck'))
@@ -26,57 +29,46 @@
 #         self.assertIn('Uppercased Rank: THREE', response.content)
 #         self.assertEqual(response.context['cards'].count(), 52)
 #
-#     def test_register_page(self):
-#         username = 'new-user'
-#         data = {
-#             'username': username,
-#             'email': 'test@test.com',
-#             'password1': 'test',
-#             'password2': 'test'
-#         }
-#         response = self.client.post(reverse('register'), data)
-#
-#         # Check this user was created in the database
-#         self.assertTrue(Player.objects.filter(username=username).exists())
-#
-#         # Check it's a redirect to the profile page
-#         self.assertIsInstance(response, HttpResponseRedirect)
-#         self.assertTrue(response.get('location').endswith(reverse('profile')))
-#
-#     def test_login_page(self):
-#         username = 'new-user'
-#         password = 'test'
-#         PlayerFactory.create(username=username, password=password)
-#         data = {
-#             'username': username,
-#             'password': password,
-#         }
-#         response = self.client.post(reverse('login'), data)
-#         # print response
-#
-#         # Check it's a redirect to the profile page
-#         self.assertIsInstance(response, HttpResponseRedirect)
-#         self.assertTrue(response.get('location').endswith(reverse('profile')))
-#
-#     def create_war_game(self, user, result=WarGame.LOSS):
-#         WarGame.objects.create(result=result, player=user)
-#
-#     def test_profile_page(self):
-#         # Create user and log them in
-#         password = 'passsword'
-#         user = PlayerFactory.create(username='test-user', email='test@test.com', password=password)
-#         self.client.login(username=user.username, password=password)
-#
-#         # Set up some war game entries
-#         WarGameFactory.create_batch(2, player=user, result=WarGame.WIN)
-#         WarGameFactory.create_batch(3, player=user, result=WarGame.LOSS)
-#         WarGameFactory.create_batch(4, player=user, result=WarGame.TIE)
-#
-#         # Make the url call and check the html and games queryset length
-#         response = self.client.get(reverse('profile'))
-#         self.assertInHTML('<p>Your email address is {}</p>'.format(user.email), response.content)
-#         self.assertEqual(len(response.context['games']), 9)
-#         self.assertInHTML('<p>You Win-Loss-Tie ratio is 2-3-4</p>', response.content)
+    def test_register_page(self):
+        username = 'new-user'
+        data = {
+            'username': username,
+            'email': 'test@test.com',
+            'password1': 'test',
+            'password2': 'test'
+        }
+        response = self.client.post(reverse('register'), data)
+
+        # Check this user was created in the database
+        self.assertTrue(Person.objects.filter(username=username).exists())
+
+        # Check it's a redirect to the profile page
+        self.assertIsInstance(response, HttpResponseRedirect)
+        self.assertTrue(response.get('location').endswith(reverse('account')))
+
+    def test_login_page(self):
+        username = 'new-user'
+        password = 'test'
+        PersonFactory.create(username=username, password=password)
+        data = {
+            'username': username,
+            'password': password,
+        }
+        response = self.client.post(reverse('login'), data)
+        # print response
+
+        # Check it's a redirect to the profile page
+        self.assertIsInstance(response, HttpResponseRedirect)
+        self.assertTrue(response.get('location').endswith(reverse('account')))
+
+
+    def test_account_page(self):
+        # Create user and log them in
+        password = 'passsword'
+        user = PersonFactory.create(username='test-user', email='test@test.com', password=password)
+        self.client.login(username=user.username, password=password)
+        response = self.client.get(reverse('account'))
+        self.assertInHTML('<p>Your email address is {}</p>'.format(user.email), response.content)
 #
 #     def test_war_page(self):
 #         # Create user and log them in

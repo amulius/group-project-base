@@ -1,15 +1,15 @@
 import factory
-from ..models import Player
+from ..models import Person
 
 
-class WarGameFactory(factory.DjangoModelFactory):
+# class WarGameFactory(factory.DjangoModelFactory):
+#     class Meta:
+#         model = 'cards.WarGame'
+
+
+class PersonFactory(factory.DjangoModelFactory):
     class Meta:
-        model = 'cards.WarGame'
-
-
-class PlayerFactory(factory.DjangoModelFactory):
-    class Meta:
-        model = Player
+        model = Person
     username = factory.Sequence(lambda i: 'User{}'.format(i))
     password = factory.PostGenerationMethodCall('set_password',
                                                 'password')

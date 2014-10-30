@@ -11,6 +11,7 @@ from django.forms import ModelForm
 
 class PersonForm(UserCreationForm):
     email = forms.EmailField(required=True)
+
     class Meta:
         model = Person
         fields = ["image", "username", "first_name", "last_name", "email", "password1", "password2"]
@@ -42,13 +43,12 @@ class EditPersonForm(forms.Form):
 
 
 class LoginForm(forms.Form):
-    username = forms.CharField(label=("username"), widget=forms.CharField)
-    password1 = forms.CharField(label=("Password"), widget=forms.PasswordInput)
+    username = forms.CharField(widget=forms.TextInput(attrs={'class': 'textb0x'}))
+    password1 = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'textb0x'}))
 
     class Meta:
         model = Person
         fields = ["username", "password1"]
-
 
     def clean_username(self):
         # Check for existing username

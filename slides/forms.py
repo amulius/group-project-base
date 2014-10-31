@@ -37,10 +37,10 @@ class EditPersonForm(forms.Form):
     password2 = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'textb0x'}))
     image = forms.ImageField()
 
-    # class Meta:
-    #     model = Person
-    #     fields = ("email", "password1", "password2", "image")
-    #
+    class Meta:
+        model = Person
+        fields = ("real_name", "email", "password1", "password2", "image")
+
 
     def clean_username(self):
         # Since User.username is unique, this check is redundant,

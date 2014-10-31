@@ -61,7 +61,9 @@ def edit_account(request):
         print request.POST
         print request.FILES
         if form.is_valid():
-            image = request.POST["file1"]
+
+
+
             real_name = request.POST["real_name"]
             email = request.POST["email"]
             password1 = request.POST["password1"]
@@ -69,7 +71,9 @@ def edit_account(request):
             print form
             names = real_name.split()
             current_user = Person.objects.get(username=request.user)
-            current_user.image = image
+            if len(request.FILES):
+                image = request.FILES["file1"]
+                current_user.image = image
             current_user.first_name = names[0]
             current_user.last_name = names[1]
             current_user.email = email

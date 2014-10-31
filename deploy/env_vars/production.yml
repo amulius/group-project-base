@@ -1,6 +1,6 @@
 ---
 
-production_project_name: "group_project_base"
+production_project_name: "group-project-base"
 virtual_env_name: "group_project"
 db_name: "group_project"
 db_user: "group_project"

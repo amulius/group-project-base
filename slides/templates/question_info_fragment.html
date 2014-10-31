@@ -2,13 +2,14 @@
 <div class="panel panel-default panelquestion">
     <p class="questionpage">{{ question_count }} Total Questions</p>
 </div>
-    <div class="panel-body body-done">
+    <div class="panel-body body-done" id="q_body">
         {% if questions %}
             {% for question in questions %}
                 <div><img class="user" src="{{ question.student.image.url }}"/></div>
-                <p class="name"> {{ question.student.first_name }} {{ question.student.last_name }}</p>
-                <p class="text">{{ question.text }}</p>
-                <p class="date">{{ question.date }}</p>
+                <div class="question_junk"><p class="name"> {{ question.student.first_name }} {{ question.student.last_name }}</p>
+                <p class="text" id="q_text">{{ question.text }}</p>
+                <p class="date" id="q_date">{{ question.date }}</p>
+                </div>
                 <div class="panel-body body-done">
                 {% if question.answered %}
                     <button type="button" class="btn btn-lg btn-block answered">Answered!</button>

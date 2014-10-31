@@ -61,9 +61,6 @@ def edit_account(request):
         print request.POST
         print request.FILES
         if form.is_valid():
-
-
-
             real_name = request.POST["real_name"]
             email = request.POST["email"]
             password1 = request.POST["password1"]

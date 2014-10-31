@@ -7,7 +7,7 @@ $(document).ready(function () {
             $('section > h2:first-child').append('<button type="button" class="btn btn-primary btn_action" data-toggle="modal" data-target="#modal_actions">Actions</button>');
         }
         else{
-            $('section > h2:first-child').append('<button type="button" class="btn btn-primary btn_action" data-toggle="modal" data-target="#modal_login">Student Login</button>');
+            $('section > h2:first-child').append('<button type="button" class="btn btn-primary btn_action" data-toggle="modal" data-remote="/login/" data-target="#modal_login">Student Login</button>');
         }
 
 //      // add blue keyline in 100% width under H2 and Action button

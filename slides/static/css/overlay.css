@@ -193,3 +193,33 @@ textarea {
     padding-left: 10px;
     width: 50px;
 }
+
+#student_login {
+    padding: 15px;
+}
+
+#student_login_button {
+    margin-left: 190px;
+    background-color: #168eae;
+    color: #fff;
+}
+
+#register_here {
+    font-size: 18px;
+    margin-left: 185px;
+}
+
+#login_label {
+    width: 100px;
+    padding: 5px;
+    font-size: 24px;
+    color: #168eae;
+}
+
+#login_box {
+    padding-left: 10px;
+}
+
+#login_title {
+    color: #168eae;
+}

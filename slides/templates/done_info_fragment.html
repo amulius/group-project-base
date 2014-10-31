@@ -6,7 +6,7 @@
     {% if dones %}
     {% for done in dones %}
     <div><img class="user" src="{{ done.student.image.url }}"/></div><p class="name"> {{ done.student.first_name }} {{ done.student.last_name }}</p>
-    <p class="date">{{ done.date }}</p>
+    <p class="date">{{ done.date.time }} {{ done.date.date }}</p>
     {% endfor %}
     {% endif %}
 </div>
@@ -16,7 +16,7 @@
 <div class="panel-body body-done">
     {% if not_dones %}
     {% for student in not_dones %}
-    <div><img class="user" src="{{ student.image.url }}"/></div><p> {{ student }}</p>
+    <div><img class="user" src="{{ student.image.url }}"/></div><p class="name">{{ student.first_name }} {{ student.last_name }}</p>
     {% endfor %}
     {% endif %}
 </div>

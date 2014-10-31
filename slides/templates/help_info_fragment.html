@@ -6,7 +6,7 @@
         {% if helps %}
             {% for help in helps %}
                 <div><img class="user" src="{{ help.student.image.url }}"/></div><p class="name"> {{ help.student.first_name }} {{ help.student.last_name }}</p>
-                <p class="date">{{ help.date }}</p>
+                <p class="date">{{ help.date.time }} {{ help.date.date }}</p>
                 <div class="panel-body body-done">
                 {% if help.helped %}
                     <button type="button" class="btn btn-lg btn-block been_helped">Helped!</button>

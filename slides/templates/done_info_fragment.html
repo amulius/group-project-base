@@ -5,7 +5,7 @@
 <div class="panel-body body-done">
     {% if dones %}
     {% for done in dones %}
-    <div><img class="user" src="{{ done.student.image.url }}"/></div><p> {{ done.student.first_name }} {{ done.student.last_name }}</p>
+    <div><img class="user" src="{{ done.student.image.url }}"/></div><p class="name"> {{ done.student.first_name }} {{ done.student.last_name }}</p>
     <p class="date">{{ done.date }}</p>
     {% endfor %}
     {% endif %}

@@ -103,9 +103,10 @@ max-width: 1.5em;
 .donepage {
     font-family: ProximaNova-Regular, sans-serif;
     color: #43de6c;
-    font-size: .7em;
+    font-size: 1.5em;
     line-height: .5em;
     margin-bottom: .2em;
+    font-weight: bold;
 }
 
 .paneldone  {
@@ -147,7 +148,7 @@ max-width: 1.5em;
 }
 
 .name {
-    padding-top: .3em;
+    padding-top: .75em;
     line-height: .5em;
     font-size: 1.4em;
 
@@ -172,7 +173,7 @@ max-width: 100%;
 .helppage {
     font-family: ProximaNova-Regular, sans-serif;
     color: #d53038;
-    font-size: .7em;
+    font-size: 1.5em;
     line-height: .5em;
     margin-bottom: .2em;
 }
@@ -192,23 +193,25 @@ max-width: 100%;
 
 }
 
-.btn-danger {
-    border-radius:0;
-}
+/*.btn-danger {*/
+    /*border-radius:0;*/
+/*}*/
 
-.btn-default {
-    border-color: red;
-    background-color:white;
-    color: #c92e35;
-    border-radius: 0;
-}
+/*.btn-default {*/
+    /*border-color: red;*/
+    /*background-color:white;*/
+    /*color: #c92e35;*/
+    /*border-radius: 0;*/
+/*}*/
 
 /*questions page*/
 
 .questionpage {
     font-family: ProximaNova-Regular, sans-serif;
     color: #c9aa18;
-    font-size: 1em;
+    font-size: 1.5em;
+    line-height: .5em;
+    margin-bottom: .2em;
 }
 
 .panelquestion  {
@@ -233,8 +236,23 @@ max-width: 100%;
 
 #answered, .answered {
     border-color: #c9aa18;
-    background-color:white !important;
+    background-color: white !important;
     color: #c9aa18;
+    border-radius: 0;
+    border-width: 2px;
+}
+
+
+.need_help  {
+    border-radius:0;
+    background-color: #c92e35 !important;
+    color:white;
+}
+
+.been_helped {
+    border-color: #c92e35;
+    background-color:white !important;
+    color: #c92e35;
     border-radius: 0;
     border-width: 2px;
 }

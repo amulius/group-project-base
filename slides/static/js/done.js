@@ -1,7 +1,7 @@
 $(document).ready(function () {
         console.log('starting done');
         GetDone();
-        setInterval(GetDone, 5000);
+//        setInterval(GetDone, 5000);
 });
 
 

@@ -1,4 +1,4 @@
-$('.helped').on('click', function () {
+$('.need_help').on('click', function () {
 //        console.log($(this));
         var pk = $(this).data('pk');
 //        console.log(pk);
@@ -12,7 +12,7 @@ $('.helped').on('click', function () {
             data: JSON.stringify(data),
             success: function (data) {
                 console.log(data);
-                $('.helped').filter('[data-pk="'+data['updated']+'"]').removeClass('btn-danger helped').addClass('btn-default').text('Helped!');
+                $('.need_help').filter('[data-pk="'+data['updated']+'"]').removeClass('need_help').addClass('been_helped').text('Helped!');
             },
             error: function (data) {
                 console.log('helped bad');

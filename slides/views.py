@@ -28,7 +28,7 @@ def student_login(request):
     else:
         form = LoginForm()
 
-    return render(request, "registration/login.html", {
+    return render(request, "includes/login.html", {
         'form': form,
     })
 

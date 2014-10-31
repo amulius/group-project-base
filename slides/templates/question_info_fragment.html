@@ -8,7 +8,7 @@
                 <div><img class="user" src="{{ question.student.image.url }}"/></div>
                 <div class="question_junk"><p class="name"> {{ question.student.first_name }} {{ question.student.last_name }}</p>
                 <p class="text" id="q_text">{{ question.text }}</p>
-                <p class="date" id="q_date">{{ question.date }}</p>
+                <p class="date" id="q_date">{{ question.date.time }} {{ question.date.date }}</p>
                 </div>
                 <div class="panel-body body-done">
                 {% if question.answered %}

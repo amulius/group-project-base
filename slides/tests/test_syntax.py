@@ -7,7 +7,7 @@
 #         """
 #         Run pyflakes/pep8 across the code base to check for potential errors.
 #         """
-#         packages = ['cards']
+#         packages = ['slides']
 #         warnings = []
 #         # Eventually should use flake8 instead so we can ignore specific lines via a comment
 #         for package in packages:

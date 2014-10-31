@@ -1,6 +1,5 @@
 $(document).ready(function () {
-        console.log('starting done');
-        GetDone();
+        GetDones();
         setInterval(GetDones, 5000);
 });
 
@@ -8,8 +7,6 @@ $(document).ready(function () {
 function GetDones(){
         var path = window.location.pathname + window.location.hash;
         var slide = '/' + path.split('/').slice(2).join('/');
-        console.log(slide);
-        console.log('get dones');
         var data = {
             'want': 'done',
             'slide': slide

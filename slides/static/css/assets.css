@@ -5,70 +5,119 @@ margin: 20px;
 
 .title {
     border-bottom: 2px solid black;
+    padding-bottom: 0;
+
+
 }
 .unit {
     color: lightgray;
+    line-height: .7em;
+    font-weight: bold;
+}
+.unit_title {
+    line-height: .7em;
+    font-weight: bold;
+
 }
 .panel {
     border: 0;
-    border-bottom: 1px solid lightgray;
+    border-bottom: 2px solid lightgray;
     padding: 2em;
+    padding-left: .1em;
+    /*padding-bottom: .5em;*/
+    margin-left: 0;
+    margin-right: 0;
+    box-shadow: 0, !important;
+
+
+}
+.panel-group {
+    margin-right: 0;
+    margin-left: 0;
+    padding-top: 0;
 }
 .panel a {
-    font-family: arial, helvetica, sans-serif;
+    font-family: ProximaNova-Regular, sans-serif;
     color: black;
     font-size: 2em;
     font-weight: bold;
+    line-height: .7em;
+    text-align: left;
 }
+
 .panel-body{
-    border-bottom: 1px solid lightgrey;
+    border-bottom: 2px solid lightgrey;
+    margin-left: 0;
+    padding-left: 0;
 }
+
+.panel-body p {
+    padding-left: 0;
+    margin-left: 0;
+ }
 
 .fa {
     color: lightgray;
 }
 .done > a{
-    font-family: arial, helvetica, sans-serif;
+    font-family: ProximaNova-Regular, sans-serif;
     color: #43de6c;
     font-size: 2.5em;
+    padding-left: 0;
+    font-weight: lighter;
 }
-
+.done a span {
+    font-weight: bold;
+    font-family: "Helvetica Neue", sans-serif;
+}
 .questions > a{
-    font-family: arial, helvetica, sans-serif;
+    font-family: ProximaNova-Regular, sans-serif;
     color: #c9aa18;
     font-size: 2.5em;
-
+    font-weight: lighter;
 }
 
+.questions a span {
+    font-weight: bold;
+}
 .help > a{
-    font-family: arial, helvetica, sans-serif;
+    font-family: ProximaNova-Regular, sans-serif;
     color: #d53038;
     font-size: 2.5em;
+    font-weight: lighter;
+}
+
+.help a span {
+    font-weight: bold;
 }
 
 img {
 float: right;
-max-width: 100%;
-    max-height: 100%;
+max-width: 1.5em;
+    max-height: 1.5em;
 }
 
 /*Done Page Section*/
 
 
 .donepage {
-    font-family: arial, helvetica, sans-serif;
+    font-family: ProximaNova-Regular, sans-serif;
     color: #43de6c;
-    font-size: 1em;
+    font-size: 1.5em;
+    line-height: .5em;
+    margin-bottom: .2em;
+    font-weight: bold;
 }
 
 .paneldone  {
     border: 0;
     border-bottom: 3px solid #43de6c;
     padding-bottom: 0;
+    padding-top: 1.5em;
 
 }
 .paneldone a {
-    font-family: arial, helvetica, sans-serif;
+    font-family: ProximaNova-Regular, sans-serif;
     color: #43de6c;
     font-size: 2em;
     font-weight: bold;
@@ -76,13 +125,14 @@ max-width: 100%;
 }
 .body-done{
     border-bottom: 0;
-    font-family: arial, helvetica, sans-serif;
-    color: black;
+    font-family: ProximaNova-Regular, sans-serif;
+    color: #4b4b4b;
     font-size: 1em;
+    margin-top: 1.25em;
 }
 
 .date {
-    font-family: arial, helvetica, sans-serif;
+    font-family: ProximaNova-Regular, sans-serif;
     color: #dad9db;
     font-size: 1em;
     margin-left: 50px;
@@ -93,15 +143,27 @@ max-width: 100%;
     max-width: 100%;
     max-height: 100%;
     margin-right: 20px;
-    width: 2em;
+    width: 2.5em;
+
 }
 
+.name {
+    padding-top: .75em;
+    line-height: .5em;
+    font-size: 1.4em;
+
+}
+.date {
+    line-height: .8em;
+    font-size: 1.5em;
+}
 #doneimg {
 max-width: 100%;
     max-height: 100%;
     float: none;
     display: block;
     margin: 0 auto;
+    width: 4em;
 
 }
 
@@ -109,42 +171,47 @@ max-width: 100%;
 /*help page*/
 
 .helppage {
-    font-family: arial, helvetica, sans-serif;
+    font-family: ProximaNova-Regular, sans-serif;
     color: #d53038;
-    font-size: 1em;
+    font-size: 1.5em;
+    line-height: .5em;
+    margin-bottom: .2em;
 }
 
 .panelhelp  {
     border: 0;
     border-bottom: 3px solid #d53038;
     padding-bottom: 0;
+    padding-top: 1.5em;
 
 }
 .panelhelp a {
-    font-family: arial, helvetica, sans-serif;
+    font-family: ProximaNova-Regular, sans-serif;
     color: #d53038;
     font-size: 2em;
     font-weight: bold;
 
 }
 
-.btn-danger {
-    border-radius:0;
-}
+/*.btn-danger {*/
+    /*border-radius:0;*/
+/*}*/
 
-.btn-default {
-    border-color: red;
-    background-color:white;
-    color: #c92e35;
-    border-radius: 0;
-}
+/*.btn-default {*/
+    /*border-color: red;*/
+    /*background-color:white;*/
+    /*color: #c92e35;*/
+    /*border-radius: 0;*/
+/*}*/
 
 /*questions page*/
 
 .questionpage {
-    font-family: arial, helvetica, sans-serif;
+    font-family: ProximaNova-Regular, sans-serif;
     color: #c9aa18;
-    font-size: 1em;
+    font-size: 1.5em;
+    line-height: .5em;
+    margin-bottom: .2em;
 }
 
 .panelquestion  {
@@ -154,29 +221,44 @@ max-width: 100%;
 
 }
 .panelquestion a {
-    font-family: arial, helvetica, sans-serif;
+    font-family: ProximaNova-Regular, sans-serif;
     color: #c9aa18;
     font-size: 2em;
     font-weight: bold;
 
 }
 
-#answer  {
+#answer, .answer  {
     border-radius:0;
     background-color: #c9aa18 !important;
     color:white;
 }
 
-#answered {
+#answered, .answered {
     border-color: #c9aa18;
-    background-color:white !important;
+    background-color: white !important;
     color: #c9aa18;
     border-radius: 0;
     border-width: 2px;
 }
 
+
+.need_help  {
+    border-radius:0;
+    background-color: #c92e35 !important;
+    color:white;
+}
+
+.been_helped {
+    border-color: #c92e35;
+    background-color:white !important;
+    color: #c92e35;
+    border-radius: 0;
+    border-width: 2px;
+}
+
 .text {
-    font-family: arial, helvetica, sans-serif;
+    font-family: ProximaNova-Regular, sans-serif;
     color: #9c9c9c;
     font-size: 1em;
     margin-left: 50px;

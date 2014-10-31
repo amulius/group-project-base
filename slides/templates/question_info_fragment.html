@@ -1,0 +1,22 @@
+{% load staticfiles %}
+<div class="panel panel-default panelquestion">
+    <p class="questionpage">{{ question_count }} Total Questions</p>
+</div>
+    <div class="panel-body body-done">
+        {% if questions %}
+            {% for question in questions %}
+                <div><img class="user" src="{{ question.student.image.url }}"/></div>
+                <p class="name"> {{ question.student.first_name }} {{ question.student.last_name }}</p>
+                <p class="text">{{ question.text }}</p>
+                <p class="date">{{ question.date }}</p>
+                <div class="panel-body body-done">
+                {% if question.answered %}
+                    <button type="button" class="btn btn-lg btn-block answered">Answered!</button>
+                {% else %}
+                    <button data-pk="{{ question.pk }}" type="button" class="btn btn-lg btn-block answer">Answered?</button>
+                {% endif %}
+                </div>
+            {% endfor %}
+        {% endif %}
+    </div>
+<script src="{% static 'js/question_buttons.js' %}"></script>

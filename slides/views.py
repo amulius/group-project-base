@@ -57,13 +57,16 @@ def register(request):
 def edit_account(request):
     if request.method == 'POST':
         form = EditPersonForm(request.POST, request.FILES)
+        print form
+        print request.POST
+        print request.FILES
         if form.is_valid():
-            image = request.POST["image"]
+            image = request.POST["file1"]
             real_name = request.POST["real_name"]
             email = request.POST["email"]
             password1 = request.POST["password1"]
             password2 = request.POST["password2"]
-
+            print form
             names = real_name.split()
             current_user = Person.objects.get(username=request.user)
             current_user.image = image

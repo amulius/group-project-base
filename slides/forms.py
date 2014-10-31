@@ -35,7 +35,7 @@ class EditPersonForm(forms.Form):
     email = forms.EmailField(widget=forms.TextInput(attrs={'class': 'textb0x'}))
     password1 = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'textb0x'}))
     password2 = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'textb0x'}))
-    image = forms.ImageField()
+    image = forms.ImageField(required=False)
 
     class Meta:
         model = Person

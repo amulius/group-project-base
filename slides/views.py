@@ -58,6 +58,7 @@ def edit_account(request):
     if request.method == 'POST':
         form = EditPersonForm(request.POST, request.FILES)
         if form.is_valid():
+            image = request.POST["image"]
             real_name = request.POST["real_name"]
             email = request.POST["email"]
             password1 = request.POST["password1"]
@@ -65,6 +66,7 @@ def edit_account(request):
 
             names = real_name.split()
             current_user = Person.objects.get(username=request.user)
+            current_user.image = image
             current_user.first_name = names[0]
             current_user.last_name = names[1]
             current_user.email = email
@@ -76,6 +78,7 @@ def edit_account(request):
     else:
         current_user = Person.objects.get(username=request.user)
         data = {
+            'image': current_user.image,
             'real_name': current_user.first_name + ' ' + current_user.last_name,
             'email': current_user.email,
             'password1': '',

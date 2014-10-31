@@ -117,6 +117,30 @@ def lecture(request, week_number, lecture_time):
     return render(request, "lecture.html", data)
 
 
+def done_test(request, week_number, lecture_time):
+    data = {
+        'week_number': week_number,
+        'lecture_time': lecture_time
+    }
+    return render(request, "done_body_fragment.html", data)
+
+
+def help_test(request, week_number, lecture_time):
+    data = {
+        'week_number': week_number,
+        'lecture_time': lecture_time
+    }
+    return render(request, "help_body_fragment.html", data)
+
+
+def question_test(request, week_number, lecture_time):
+    data = {
+        'week_number': week_number,
+        'lecture_time': lecture_time
+    }
+    return render(request, "question_body_fragment.html", data)
+
+
 @csrf_exempt
 def lecture_fragment(request):
     if request.method == 'POST':
@@ -129,8 +153,89 @@ def lecture_fragment(request):
 def details(request):
     if request.method == 'POST':
         data_in = json.loads(request.body)
+        slide = Slide.objects.filter(name=data_in['slide'])
         if data_in['want'] == 'basic':
-            return render_to_response('basic_info_fragment.html', data_in)
+            if slide:
+                data = {
+                    'slide': data_in['slide'],
+                    'done': Done.objects.filter(slide=slide[0]).distinct('student').count(),
+                    'help': Help.objects.filter(slide=slide[0], helped=False).count(),
+                    'question': Question.objects.filter(slide=slide[0], answered=False).count(),
+                }
+            else:
+                data = {
+                    'slide': data_in['slide'],
+                    'done': 0,
+                    'help': 0,
+                    'question': 0,
+                }
+            return render_to_response('basic_info_fragment.html', data)
+        elif data_in['want'] == 'done':
+            # print 'done'
+            # print slide
+            if slide:
+                data = {
+                    'done_count': Done.objects.filter(slide=slide[0]).distinct('student').count(),
+                    'dones': Done.objects.filter(slide=slide[0]).distinct('student'),
+                    'not_dones': Person.objects.filter(is_student=True).exclude(is_done__slide=slide[0])
+                }
+            else:
+                data = {
+                    'done_count': 0,
+                    'dones': 0,
+                    'not_dones': Person.objects.filter(is_student=True)
+                }
+            # print data
+            return render_to_response('done_info_fragment.html', data)
+        elif data_in['want'] == 'help':
+            if slide:
+                data = {
+                    'help_count': Help.objects.filter(slide=slide[0], helped=False).count(),
+                    'helps': Help.objects.filter(slide=slide[0]).order_by('date'),
+                }
+            else:
+                data = {
+                    'help_count': 0,
+                    'help': 0,
+                }
+            return render_to_response('help_info_fragment.html', data)
+        elif data_in['want'] == 'question':
+            if slide:
+                data = {
+                    'question_count': Question.objects.filter(slide=slide[0], answered=False).count(),
+                    'questions': Question.objects.filter(slide=slide[0]).order_by('date'),
+                }
+            else:
+                data = {
+                    'question_count': 0,
+                    'questions': 0,
+                }
+            return render_to_response('question_info_fragment.html', data)
+
+
+@csrf_exempt
+def update(request):
+    if request.method == 'POST':
+        data_in = json.loads(request.body)
+        print data_in
+        pk = data_in['pk']
+        if data_in['want'] == 'helped':
+            active_help = Help.objects.get(pk=pk)
+            print active_help
+            active_help.helped = True
+            active_help.save()
+            data = {
+                'updated': pk
+            }
+            return JsonResponse(data)
+        elif data_in['want'] == 'answered':
+            active_question = Question.objects.get(pk=pk)
+            active_question.answered = True
+            active_question.save()
+            data = {
+                'updated': pk
+            }
+            return JsonResponse(data)
 
 
 @csrf_exempt

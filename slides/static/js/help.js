@@ -1,10 +1,10 @@
 $(document).ready(function () {
-        GetDone();
-        setInterval(GetDone, 5000);
+        GetHelps();
+        setInterval(GetHelps, 5000);
 });
 
 
-function GetDone(){
+function GetHelps(){
         var path = window.location.pathname + window.location.hash;
         var slide = '/' + path.split('/').slice(2).join('/');
         var data = {
@@ -19,7 +19,7 @@ function GetDone(){
                 $('#help_stuff').html(data);
             },
             error: function (data) {
-                console.log('done bad');
+                console.log('help bad');
                 console.log(data);
             }
         });

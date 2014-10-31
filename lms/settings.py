@@ -83,6 +83,7 @@ AUTH_USER_MODEL = 'slides.Person'
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
 
+LOGIN_REDIRECT_URL = '/account/'
 
 LOGIN_URL = 'login'
 

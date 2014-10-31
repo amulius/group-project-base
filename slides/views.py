@@ -1,16 +1,36 @@
 import json
 from django.contrib.auth import authenticate, login
 from django.http import JsonResponse
-from django.shortcuts import render, redirect, render_to_response
+from django.shortcuts import render_to_response
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
-from slides.forms import PersonForm, EditPersonForm
+from slides.forms import PersonForm, EditPersonForm, LoginForm
 from slides.models import Person, Done, Slide, Help, Question
 
 
 def test_overlay(request):
     return render(request, "test_overlay.html")
+
+
+def student_login(request):
+    if request.method == 'POST':
+        form = LoginForm(request.POST, request.FILES)
+        if form.is_valid():
+            username = request.POST["username"]
+            password = request.POST["password1"]
+            form.save()
+            user = authenticate(username=username, password=password)
+            if user is not None:
+                if user.is_active:
+                    login(request, user)
+                    return redirect("slides_home")
+    else:
+        form = LoginForm()
+
+    return render(request, "registration/login.html", {
+        'form': form,
+    })
 
 
 def register(request):
@@ -33,18 +53,27 @@ def register(request):
     })
 
 
-# @login_required
+@login_required
 def edit_account(request):
     if request.method == 'POST':
         form = EditPersonForm(request.POST, request.FILES)
+        print form
+        print request.POST
+        print request.FILES
         if form.is_valid():
+
+
+
             real_name = request.POST["real_name"]
             email = request.POST["email"]
             password1 = request.POST["password1"]
             password2 = request.POST["password2"]
-
+            print form
             names = real_name.split()
             current_user = Person.objects.get(username=request.user)
+            if len(request.FILES):
+                image = request.FILES["file1"]
+                current_user.image = image
             current_user.first_name = names[0]
             current_user.last_name = names[1]
             current_user.email = email
@@ -56,6 +85,7 @@ def edit_account(request):
     else:
         current_user = Person.objects.get(username=request.user)
         data = {
+            'image': current_user.image,
             'real_name': current_user.first_name + ' ' + current_user.last_name,
             'email': current_user.email,
             'password1': '',
@@ -64,22 +94,6 @@ def edit_account(request):
         form = EditPersonForm(initial=data)
 
     return render(request, "edit_account.html", {'form': form, })
-    # person = Person.objects.get(id=person_id)
-    # # We still check to see if we are submitting the form
-    # if request.method == "POST":
-    #     # We prefill the form by passing 'instance', which is the specific
-    #     # object we are editing
-    #     form = EditPersonForm(request.POST, request.FILES, instance=person)
-    #     if form.is_valid():
-    #         if form.save():
-    #             return redirect("slides_home")
-    # # Or just viewing the form
-    # else:
-    #     # We prefill the form by passing 'instance', which is the specific
-    #     # object we are editing
-    #     form = EditPersonForm(instance=person)
-    # data = {"person": person, "form": form}
-    # return render(request, "edit_account.html", data)
 
 
 def teacher(request):
@@ -264,3 +278,7 @@ def student_actions(request):
                 'return': 'good'
             }
         return JsonResponse(data)
+
+
+
+

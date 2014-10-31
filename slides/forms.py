@@ -11,9 +11,10 @@ from django.forms import ModelForm
 
 class PersonForm(UserCreationForm):
     email = forms.EmailField(required=True)
+
     class Meta:
         model = Person
-        fields = ("image", "username", "first_name", "last_name", "email", "password1", "password2")
+        fields = ["image", "username", "first_name", "last_name", "email", "password1", "password2"]
 
     def clean_username(self):
         # Since User.username is unique, this check is redundant,
@@ -30,30 +31,34 @@ class PersonForm(UserCreationForm):
 
 
 class EditPersonForm(forms.Form):
-    real_name = forms.CharField(required=True)
-    email = forms.EmailField(required=True)
-    password1 = forms.CharField(label=("Password"), widget=forms.PasswordInput,)
-    password2 = forms.CharField(label=("Password confirmation"), widget=forms.PasswordInput,)
+    real_name = forms.CharField(required=True, widget=forms.TextInput(attrs={'class': 'textb0x'}))
+    email = forms.EmailField(widget=forms.TextInput(attrs={'class': 'textb0x'}))
+    password1 = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'textb0x'}))
+    password2 = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'textb0x'}))
+    image = forms.ImageField(required=False)
 
     class Meta:
         model = Person
-        fields = ("email", "password1", "password2", "image")
+        fields = ["image", "email", "password1", "password2"]
+
+
+class LoginForm(forms.Form):
+    username = forms.CharField(widget=forms.TextInput(attrs={'class': 'textb0x'}))
+    password1 = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'textb0x'}))
+
+    class Meta:
+        model = Person
+        fields = ["username", "password1"]
 
     def clean_username(self):
-        # Since User.username is unique, this check is redundant,
-        # but it sets a nicer error message than the ORM. See #13147.
+        # Check for existing username
         username = self.cleaned_data["username"]
         try:
             Person.objects.get(username=username)
-        except Person.DoesNotExist:
+        except Person.DoesExist:
             return username
         raise forms.ValidationError(
-            self.error_messages['duplicate_username'],
-            code='duplicate_username',
+            self.error_messages['username_does_not_exist'],
+            code='username_does_not_exist',
         )
 
-
-#
-#
-# class TeacherForm(forms.Form):
-#         date = forms.DateField(required=True)

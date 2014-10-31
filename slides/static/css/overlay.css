@@ -176,3 +176,9 @@ textarea {
 .glow:hover, .glow:focus, .glow:active {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
 }
+
+#btn_submit {
+    width; 100px;
+    margin: 13px;
+    padding: 13px;
+}

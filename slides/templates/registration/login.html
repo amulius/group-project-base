@@ -1,14 +1,3 @@
-{% extends "base.html" %}
+{% load static %}
 
-{% block content %}
-    <center>
-    <form method="post" action=".">
-        {% csrf_token %}
-        {{ form.as_p }}
-
-        <input type="submit" value="Log in">
-    </form>
-
-    <p>Not member? <a href="{% url 'register' %}">Login</a></p>
-    </center>
-{% endblock %}
+{% include 'includes/login.html' %}

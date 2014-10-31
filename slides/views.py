@@ -28,7 +28,7 @@ def student_login(request):
     else:
         form = LoginForm()
 
-    return render(request, "registration/login.html", {
+    return render(request, "includes/login.html", {
         'form': form,
     })
 
@@ -61,9 +61,6 @@ def edit_account(request):
         print request.POST
         print request.FILES
         if form.is_valid():
-
-
-
             real_name = request.POST["real_name"]
             email = request.POST["email"]
             password1 = request.POST["password1"]

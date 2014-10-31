@@ -1,6 +1,6 @@
 ---
 
-- name: Set up for exoplanet orbit model project
+- name: Set up for group project 1
   hosts: all
   sudo: yes
   sudo_user: root

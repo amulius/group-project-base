@@ -1,0 +1,9 @@
+---
+
+production_project_name: "group_project_base"
+virtual_env_name: "group_project"
+db_name: "group_project"
+db_user: "group_project"
+db_password: myawesomepassword
+nginx_server_name: "ec2-54-200-79-56.us-west-2.compute.amazonaws.com"
+django_settings_file: lms.settings

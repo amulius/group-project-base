@@ -1,0 +1,46 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Done</title>
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="{% static 'css/assets.css' %}" type="text/css">
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+</head>
+<body>
+<div class="main">
+    <div class="panel-group" id="accordion"><img id="doneimg"  src="{% static 'img/Assets/Questionmark-hollow.png' %}"/>
+        <div class="panel panel-default panelquestion"><a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+            <p class="questionpage">2 Total Questions</p></a>
+
+            </div>
+            <div id="collapseOne" class="panel-collapse collapse">
+                <div class="panel-body body-done">
+                <div><img class="user" src="{% static 'img/Assets/default-profile-photo.png' %}"/></div><p> Will Harlan</p>
+                <p class="text">The content of the question paragraph written by the student.</p>
+                <p class="date">date & time</p>
+
+                </div>
+                <div class="panel-body body-done">
+                <button type="button" class="btn  btn-lg btn-block" id="answer">Answered?</button>
+                </div>
+                <div class="panel-body body-done">
+                <div><img class="user" src="{% static 'img/Assets/default-profile-photo.png' %}"/></div><p> Will Harlan</p>
+                <p class="text">The content of the question paragraph written by the student.</p>
+                <p class="date">date & time</p>
+                </div>
+                <div class="panel-body body-done">
+                <button type="button" class="btn btn-lg btn-block" id="answered">Answered!</button>
+                </div>
+            </div>
+        </div>
+
+
+
+</body>
+</html>

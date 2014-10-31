@@ -1,0 +1,48 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Done</title>
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="{% static 'css/assets.css' %}" type="text/css">
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+</head>
+<body>
+<div class="main">
+    <div class="panel-group" id="accordion"><img id="doneimg"  src="{% static 'img/Assets/Checkmark-HOLLOW.png' %}"/>
+        <div class="panel panel-default paneldone">
+            <p class="donepage">16 Done</p>
+        </div>
+            <div id="collapseOne" class="panel-collapse collapse in">
+                <div class="panel-body body-done">
+                <div><img class="user" src="{% static 'img/Assets/default-profile-photo.png' %}"/></div>
+                    <div><p class="name"> Will Harlan</p>
+                <p class="date">4:32pm, October 24th</p></div>
+            </div>
+
+            <div class="panel panel-default paneldone">
+                <p class="donepage">4 Not Done</p>
+            </div>
+            <div id="collapseTwo" class="panel-collapse collapse in">
+{#                <div class="panel-body body-done">#}
+{#                <div><img class="user" src="{% static 'img/Assets/default-profile-photo.png' %}"/></div><p> Will Harlan</p>#}
+{#                <p class="date">date & time</p>#}
+{#                </div>#}
+{#                <div class="panel-body body-done">#}
+{#                <div><img class="user" src="{% static 'img/Assets/default-profile-photo.png' %}"/></div><p> Will Harlan</p>#}
+{#                <p class="date">date & time</p>#}
+{#                </div>#}
+{#                <div class="panel-body body-done">#}
+{#                <div><img class="user" src="{% static 'img/Assets/default-profile-photo.png' %}"/></div><p> Will Harlan</p>#}
+{#                <p class="date">date & time</p>#}
+{#                </div>#}
+            </div>
+        </div>
+    </div>
+</body>
+</html>

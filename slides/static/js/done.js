@@ -1,11 +1,11 @@
 $(document).ready(function () {
         console.log('starting done');
         GetDone();
-//        setInterval(GetDone, 5000);
+        setInterval(GetDones, 5000);
 });
 
 
-function GetDone(){
+function GetDones(){
         var path = window.location.pathname + window.location.hash;
         var slide = '/' + path.split('/').slice(2).join('/');
         console.log(slide);

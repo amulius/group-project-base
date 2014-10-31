@@ -4,12 +4,12 @@
 {% block account %}
     <section class="reveal">
 
-    <p style="font-size: 42px;">Edit Account</p> <hr>
+    <p id="edit_title">Edit Account</p> <hr>
 
         <form method="post" action="." enctype="multipart/form-data" >
             {% csrf_token %}
             <div class="row">
-            <div class="col-lg-12"><img class="img-circle glow" id="upfile1" style="cursor:pointer" src="{{ user.image.url }}" /><input type="file" id="file1" name="file1" style="display:none" /></div>
+            <div class="col-lg-12"><img class="img-circle glow" id="upfile1" src="{{ user.image.url }}" /><input type="file" id="file1" name="file1" style="display:none" /></div>
             <div class="col-lg-3"></div>
             <div class="col-lg-6" id="textlabel" align="center">Upload a new profile photo</div>
             <div class="col-lg-3"></div>

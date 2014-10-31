@@ -153,6 +153,11 @@ textarea {
 
 #upfile1 {
     width: 100px;
+    cursor: pointer;
+}
+
+#edit_title {
+    font-size: 42px;
 }
 
 #edit_profile {
@@ -178,7 +183,13 @@ textarea {
 }
 
 #btn_submit {
-    width; 100px;
+    width: 100px;
     margin: 13px;
     padding: 13px;
+}
+
+#newProfile {
+    margin-top: -16px;
+    padding-left: 10px;
+    width: 50px;
 }

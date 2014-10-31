@@ -27,7 +27,7 @@ $(document).ready(function () {
                 'slide': url,
                 'question_text': question
             };
-
+    console.log($(this));
         console.log(url);
         $.ajax({
             url: '/student_actions/',

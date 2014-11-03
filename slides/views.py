@@ -55,6 +55,8 @@ def register(request):
 
 @login_required
 def edit_account(request):
+    # As mentioned in models.py, if EditPersonForm was a ModelForm you wouldn't have to 
+    # handle initial data and saving the user yourself
     if request.method == 'POST':
         form = EditPersonForm(request.POST, request.FILES)
         print form
@@ -93,6 +95,7 @@ def edit_account(request):
     return render(request, "edit_account.html", {'form': form, })
 
 
+# Could just make these all direct to template views in the urls.py
 def teacher(request):
     return render(request, "teacher.html")
 
@@ -153,11 +156,13 @@ def lecture_fragment(request):
             return render_to_response('lecture_fragment.html', data_in)
 
 
+# Don't use @csrf_exempt!
 @csrf_exempt
 def details(request):
     if request.method == 'POST':
         data_in = json.loads(request.body)
         slide = Slide.objects.filter(name=data_in['slide'])
+        # Would be hard to unit test this all block of code, should move these into separate functions potentially
         if data_in['want'] == 'basic':
             if slide:
                 data = {
@@ -217,6 +222,7 @@ def details(request):
             return render_to_response('question_info_fragment.html', data)
 
 
+# Same as above for this view and the one below, could abstract out the different "Actions" to be more DRY
 @csrf_exempt
 def update(request):
     if request.method == 'POST':
@@ -248,6 +254,7 @@ def student_actions(request):
     if request.method == 'POST':
         data_in = json.loads(request.body)
         print data_in
+        # Pull out getting the Person and Slide
         if data_in['action'] == 'done':
             print 'done'
             print data_in

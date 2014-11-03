@@ -12,6 +12,8 @@ class Person(AbstractUser):
         return u"{}".format(self.username)
 
 
+# just using name works completely fine for the project at hand
+# may be more uses for saving other information about the particular slide though
 class Slide(models.Model):
     name = models.CharField(max_length=40, unique=True)
 
@@ -19,6 +21,8 @@ class Slide(models.Model):
         return u"{}".format(self.name)
 
 
+# These 3 models could share the same abstract model with date, student, and slide
+# Potentially Done/Help could be the same model since a student can't be both at the same time
 class Done(models.Model):
     date = models.DateTimeField(auto_now_add=True)
     student = models.ForeignKey(Person, related_name='is_done')

@@ -4,6 +4,8 @@ $(document).ready(function () {
 });
 
 
+// Could you have done.js, help.js, and question.js share some of the AJAX and html creation code?
+// Seem like there could be some reuse
 function GetDones(){
         var path = window.location.pathname + window.location.hash;
         var slide = '/' + path.split('/').slice(2).join('/');

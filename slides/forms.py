@@ -30,6 +30,7 @@ class PersonForm(UserCreationForm):
         )
 
 
+# This would probably be better suited as a ModelForm, so it could handle the saving for you minus passwords
 class EditPersonForm(forms.Form):
     real_name = forms.CharField(required=True, widget=forms.TextInput(attrs={'class': 'textb0x'}))
     email = forms.EmailField(widget=forms.TextInput(attrs={'class': 'textb0x'}))

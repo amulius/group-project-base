@@ -14,7 +14,7 @@
           <div class="modal-body">
                 <div class="row">
                 <div class="col-lg-8 col-md-8 modal-title" id="myModalLabel"></div>
-                <div align="right" class="col-lg-3 col-lg-offset-1 col-md-3 col-md-offset-1 modal-title" id="myProfile" data-username="{{ user.username }}"><img class="img-circle" src="{{ user.image.url }}"/>{{ user.first_name }} {{ user.last_name }}</div>
+                <div align="right" class="col-lg-3 col-lg-offset-1 col-md-3 col-md-offset-1 modal-title" id="myProfile" data-username="{{ user.username }}"><img class="img-circle" src="{{ user.image.url }}"/><a href="{% url 'edit_account' %}">{{ user.first_name }} {{ user.last_name }}</a></div>
                 </div>
               <br>
                 <div class="row">

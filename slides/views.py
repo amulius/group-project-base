@@ -247,6 +247,7 @@ def student_actions(request):
     # print request
     if request.method == 'POST':
         data_in = json.loads(request.body)
+        print data_in
         if data_in['action'] == 'done':
             print 'done'
             print data_in
